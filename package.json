@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jenkins-mocha test/*"
+    "test": "jenkins-mocha ./*"
   },
   "author": "",
   "license": "ISC",
