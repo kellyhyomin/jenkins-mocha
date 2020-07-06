@@ -1,0 +1,17 @@
+{
+  "name": "webdriver-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jenkins-mocha test/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  },
+  "devDependencies": {
+    "jenkins-mocha": "^8.0.0"
+  }
+}
