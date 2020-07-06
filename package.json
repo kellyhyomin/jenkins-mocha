@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jenkins-mocha ./*"
+    "test": "jenkins-mocha para_basic_test.js"
   },
   "author": "",
   "license": "ISC",
