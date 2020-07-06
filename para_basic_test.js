@@ -1,4 +1,3 @@
-require('chromedriver');
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 const app = require('./app');
