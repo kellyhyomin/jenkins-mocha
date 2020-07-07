@@ -29,6 +29,8 @@ describe('Test', function() {
  
     describe('PARA Basic Test', function() { 
         it('Test: Login', async function() {
+          let username = process.env.POPCORNSAR_STUDIO_USERNAME;
+          let password = process.env.POPCORNSAR_STUDIO_PASSWORD;
           await app.login(username, password);
         })
       
