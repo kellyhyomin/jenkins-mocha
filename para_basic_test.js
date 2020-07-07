@@ -12,6 +12,7 @@ describe('Test', function() {
     let url = process.env.POPCORNSAR_STUDIO_URL;
 
     await app.init(url);
+    console.log('init success');
     await app.maximizeBrowser();
     await app.login(username, password);
     await app.selectWorkspace(stack);
