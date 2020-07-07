@@ -28,13 +28,14 @@ describe('Test', function() {
   });
  
     describe('PARA Basic Test', function() { 
-        it('Test: Login', async function() {
+        it('Test: LOGIN', async function() {
           let username = process.env.POPCORNSAR_STUDIO_USERNAME;
           let password = process.env.POPCORNSAR_STUDIO_PASSWORD;
-          let iframeId = 'ide-application-iframe';
-          let stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.login(username, password);
-          //await app.switchIFrame(iframeId);
+        })
+
+        it('Test: SELECT WORKSPACE', async function() {
+          let stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.selectWorkspace(stack);
         })
       
