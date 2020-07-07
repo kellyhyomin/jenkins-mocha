@@ -31,7 +31,11 @@ describe('Test', function() {
         it('Test: Login', async function() {
           let username = process.env.POPCORNSAR_STUDIO_USERNAME;
           let password = process.env.POPCORNSAR_STUDIO_PASSWORD;
+          let iframeId = 'ide-application-iframe';
+          let stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.login(username, password);
+          await app.switchIFrame(iframeId);
+          await app.selectWorkspace(stack);
         })
       
       
