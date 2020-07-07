@@ -28,6 +28,7 @@ describe('Test', function() {
     describe('PARA BASIC TEST', function() { 
       beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
+        await app.sleep(3000);
         await app.switchIFrame(iframeId);
       });
         
