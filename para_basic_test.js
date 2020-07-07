@@ -12,20 +12,20 @@ describe('Test', function() {
     let url = process.env.POPCORNSAR_STUDIO_URL;
 
     await app.init(url);
-    console.log('init success');
-    await app.maximizeBrowser();
+    console.log('init success')
+    /* await app.maximizeBrowser();
     await app.login(username, password);
-    await app.selectWorkspace(stack);
+    await app.selectWorkspace(stack); */
    
   });
   beforeEach(async function() {
-    await app.switchIFrame(iframeId);
+    //await app.switchIFrame(iframeId);
   });
   after(async function() {
     await app.quit();
   });
   afterEach(async function() {
-    await app.switchDefaultContent();
+    //await app.switchDefaultContent();
   });
  
     describe('PARA Basic Test', function() { 
