@@ -25,7 +25,7 @@ describe('Test', function() {
         })
         // workspace 없을 시 생성 
     })
-    describe('PARA Basic Test', function() { 
+    describe('PARA BASIC TEST', function() { 
       beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
         await app.switchIFrame(iframeId);
@@ -40,7 +40,7 @@ describe('Test', function() {
           let expectedResult = 'No Results';
           let menubarName = 'Terminal';
           let subMenubarName = 'Run Task...';
-          await app.sleep(6000);
+          await app.sleep(10000);
           await app.openMenuBar(menubarName);
           await app.openSubMenu(subMenubarName);
   
