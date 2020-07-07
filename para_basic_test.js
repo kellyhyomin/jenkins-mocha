@@ -3,7 +3,7 @@ const assert = require('assert')
 const app = require('./app');
 describe('Test', function() {
   let iframeId = 'ide-application-iframe';
-  this.timeout(1800000);
+  this.timeout(180000);
   before(async function() {
   
     let stack = process.env.POPCORNSAR_STUDIO_STACK;
