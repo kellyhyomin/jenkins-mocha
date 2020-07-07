@@ -1,3 +1,4 @@
+require('chromedriver');
 const chrome = require('selenium-webdriver/chrome');
 const {Builder, By, Key, until} = require('selenium-webdriver');
  
