@@ -54,7 +54,7 @@ describe('Test', function() {
           await app.createNewFile();
           await app.performPasteAction();
           assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-  
+          await app.sleep(2000);
           await app.saveFile();
           await app.closeAllTabsInMainArea();
   
@@ -79,6 +79,7 @@ describe('Test', function() {
           assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
   
           await app.saveFile();
+          await app.sleep(2000);
           await app.closeAllTabsInMainArea();
   
       })  

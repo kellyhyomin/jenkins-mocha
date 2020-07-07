@@ -103,9 +103,10 @@ module.exports = {
     await driver.findElement(By.id('theia-main-content-panel')).click();
     await driver.switchTo().activeElement().sendKeys(Key.ALT + 'n');
     if (newFileName === undefined) {
-      await this.sleep(2000);
+      await this.sleep(4000);
       await driver.switchTo().activeElement().findElement(By.xpath('//*[@id="theia-dialog-shell"]/div/div[3]/button')).click();
     } else {
+      await this.sleep(3000);
       await driver.switchTo().activeElement().findElement(By.xpath(THIEA_DIALOG_SHELL_XPATH)).sendKeys(Key.BACK_SPACE + newFileName + Key.ENTER);
     }
     await driver.sleep(3000);
@@ -114,7 +115,7 @@ module.exports = {
 
   performPasteAction: async function() {
     await driver.switchTo().activeElement().sendKeys(Key.chord(Key.CONTROL, "v"));
-    await driver.sleep(3000);
+    await driver.sleep(6000);
   },
 
   isTextPresentInTerminalOutput: async function(compareContext) {
