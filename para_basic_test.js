@@ -13,7 +13,7 @@ describe('Test', function() {
 
     await app.init(url);
     await app.maximizeBrowser();
-    await app.login(username, password);
+    
     //await app.selectWorkspace(stack);
    
   });
@@ -28,8 +28,13 @@ describe('Test', function() {
   });
  
     describe('PARA Basic Test', function() { 
+        it('Test: Login', async function() {
+          await app.login(username, password);
+        })
       
-        
+      
+
+
 
 
   })
