@@ -34,7 +34,7 @@ describe('Test', function() {
           let iframeId = 'ide-application-iframe';
           let stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.login(username, password);
-          await app.switchIFrame(iframeId);
+          //await app.switchIFrame(iframeId);
           await app.selectWorkspace(stack);
         })
       
