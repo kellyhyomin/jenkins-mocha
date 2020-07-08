@@ -93,9 +93,10 @@ module.exports = {
   },
 
   copyTerminalTextToClipboard: async function() {
+    await driver.sleep(5000);
     await driver.actions({bridge: true}).move({x: 257, y: 623}).pause(driver.actions().mouse()).press().move({x: 1600, y: 915})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();     
-    await driver.sleep(3000);
+    await driver.sleep(5000);
   },
 
   createNewFile: async function(newFileName) {
