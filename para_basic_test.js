@@ -6,7 +6,6 @@ describe('Test', function() {
   before(async function() {
     let url = process.env.POPCORNSAR_STUDIO_URL;
     await app.init(url);
-    await app.maximizeBrowser();
   });
   after(async function() {
     await app.quit();
@@ -48,7 +47,7 @@ describe('Test', function() {
           await app.openSubMenu(subMenubarName);
           
           await app.runTask(taskLabel);
-          await app.sleep(30000);
+          await app.sleep(35000);
       
           await app.copyTerminalTextToClipboard();
           await app.sleep(5000);
