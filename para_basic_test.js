@@ -65,7 +65,7 @@ describe('Test', function() {
   
       })
   
-      it('Task: R19-03 ara::exec Generator', async function() {
+      /* it('Task: R19-03 ara::exec Generator', async function() {
           let taskLabel = 'R19-03 ara::exec Generator';
           let compareContext = 'EXIT PROGRAM';
           let expectedResult = 'No Results';
@@ -87,7 +87,7 @@ describe('Test', function() {
           await app.sleep(2000);
           await app.closeAllTabsInMainArea();
   
-      })  
+      })   */
     })
 
   
