@@ -51,16 +51,17 @@ describe('Test', function() {
           await app.sleep(20000);
       
           await app.copyTerminalTextToClipboard();
-          await app.sleep(3000);
+          await app.sleep(5000);
           await app.createNewFile();
-          await app.sleep(3000);
+          await app.sleep(5000);
           await app.performPasteAction();
-          await app.sleep(3000);
+          await app.sleep(5000);
           assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-          await app.sleep(2000);
+          await app.sleep(5000);
           await app.saveFile();
-          await app.sleep(2000);
+          await app.sleep(5000);
           await app.closeAllTabsInMainArea();
+          await app.sleep(5000);
   
       })
   
