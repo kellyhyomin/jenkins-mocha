@@ -48,7 +48,7 @@ describe('Test', function() {
           await app.openSubMenu(subMenubarName);
           
           await app.runTask(taskLabel);
-          await app.sleep(20000);
+          await app.sleep(30000);
       
           await app.copyTerminalTextToClipboard();
           await app.sleep(5000);
