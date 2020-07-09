@@ -39,7 +39,7 @@ describe('Test', function() {
   
       it('Task: R19-03 ara::com Generator', async function() {
         let taskLabel = 'R19-03 ara::com Generator';
-        let compareContext = 'EXIT PROGRAM';
+        let compareContext = 'START PROGRAM';
         let expectedResult = 'No Results';
         let menubarName = 'Terminal';
         let subMenubarName = 'Run Task...';
@@ -53,7 +53,6 @@ describe('Test', function() {
         await app.copyTerminalTextToClipboard();
         await app.createNewFile();
         await app.performPasteAction();
-        await app.sleep(10000);
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         await app.saveFile();
