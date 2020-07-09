@@ -51,9 +51,9 @@ describe('Test', function() {
         await app.sleep(40000);
     
         await app.copyTerminalTextToClipboard();
-        
         await app.createNewFile();
         await app.performPasteAction();
+        await app.sleep(10000);
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         await app.saveFile();
