@@ -39,7 +39,7 @@ describe('Test', function() {
   
       it('Task: R19-03 ara::com Generator', async function() {
         let taskLabel = 'R19-03 ara::com Generator';
-        let compareContext = 'START PROGRAM';
+        let compareContext = 'PARA - ARA::COM GENERATOR R19-03';
         let expectedResult = 'No Results';
         let menubarName = 'Terminal';
         let subMenubarName = 'Run Task...';
