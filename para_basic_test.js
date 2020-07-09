@@ -43,6 +43,11 @@ describe('Test', function() {
         let expectedResult = 'No Results';
         let menubarName = 'Terminal';
         let subMenubarName = 'Run Task...';
+        let menubarName2 = 'View';
+        let subMenubarName2 = 'Explorer';
+        await app.sleep(2000);
+        await app.openMenuBar(menubarName2);
+        await app.openSubMenu(subMenubarName2);
         await app.sleep(2000);
         await app.openMenuBar(menubarName);
         await app.openSubMenu(subMenubarName);
