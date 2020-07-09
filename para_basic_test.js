@@ -52,7 +52,7 @@ describe('Test', function() {
     
         await app.copyTerminalTextToClipboard();
         await app.createNewFile();
-        await driver.sleep(5000);
+        await app.sleep(5000);
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
