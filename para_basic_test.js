@@ -54,6 +54,7 @@ describe('Test', function() {
         await app.createNewFile();
         await app.sleep(5000);
         await app.performPasteAction();
+        await app.sleep(5000);
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         await app.saveFile();
