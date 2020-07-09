@@ -36,28 +36,7 @@ describe('Test', function() {
         await app.switchDefaultContent();
       });
       
-      it('Task: Open qemu-env terminal 1', async function() {
-        let taskLabel = 'Open qemu-env terminal 1';
-        let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
-        let expectedResult = 'No Results';
-        let menubarName = 'Terminal';
-        let subMenubarName = 'Run Task...';
-        await app.sleep(6000);
-        await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName);
-
-        await app.runTask(taskLabel);
-        await app.sleep(5000);
-    
-        await app.copyTerminalTextToClipboard();
-        await app.createNewFile();
-        await app.performPasteAction();
-        assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-
-        await app.saveFile();
-        await app.closeAllTabsInMainArea();
-
-    })
+     
       it('Task: R19-03 ara::com Generator', async function() {
         let taskLabel = 'R19-03 ara::com Generator';
         let compareContext = 'PARA - ARA::COM GENERATOR R19-03';
@@ -73,6 +52,7 @@ describe('Test', function() {
     
         await app.copyTerminalTextToClipboard();
         await app.createNewFile();
+        await driver.sleep(5000);
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
