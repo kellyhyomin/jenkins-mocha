@@ -1,8 +1,5 @@
-require('chromedriver');
-const chrome = require('selenium-webdriver/chrome');
 const { Builder, By, Key, until } = require('selenium-webdriver');
-let driver = new Builder().forBrowser('chrome').setChromeOptions(
-  new chrome.Options().addArguments(['--headless','--no-sandbox', '--window-size=1920,1080'])).build();
+let driver = new Builder().forBrowser('chrome').build();
 let activeElement = driver.switchTo().activeElement();
 
 module.exports = {
@@ -93,10 +90,9 @@ module.exports = {
   },
 
   copyTerminalTextToClipboard: async function() {
-    await driver.sleep(5000);
     await driver.actions({bridge: true}).move({x: 257, y: 623}).pause(driver.actions().mouse()).press().move({x: 1600, y: 915})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();     
-    await driver.sleep(5000);
+    await driver.sleep(3000);
   },
 
   createNewFile: async function(newFileName) {
@@ -104,10 +100,9 @@ module.exports = {
     await driver.findElement(By.id('theia-main-content-panel')).click();
     await driver.switchTo().activeElement().sendKeys(Key.ALT + 'n');
     if (newFileName === undefined) {
-      await this.sleep(4000);
+      await this.sleep(2000);
       await driver.switchTo().activeElement().findElement(By.xpath('//*[@id="theia-dialog-shell"]/div/div[3]/button')).click();
     } else {
-      await this.sleep(3000);
       await driver.switchTo().activeElement().findElement(By.xpath(THIEA_DIALOG_SHELL_XPATH)).sendKeys(Key.BACK_SPACE + newFileName + Key.ENTER);
     }
     await driver.sleep(3000);
@@ -116,7 +111,7 @@ module.exports = {
 
   performPasteAction: async function() {
     await driver.switchTo().activeElement().sendKeys(Key.chord(Key.CONTROL, "v"));
-    await driver.sleep(6000);
+    await driver.sleep(3000);
   },
 
   isTextPresentInTerminalOutput: async function(compareContext) {

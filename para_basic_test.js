@@ -38,30 +38,27 @@ describe('Test', function() {
       
   
       it('Task: R19-03 ara::com Generator', async function() {
-          let taskLabel = 'R19-03 ara::com Generator';
-          let compareContext = 'EXIT PROGRAM';
-          let expectedResult = 'No Results';
-          let menubarName = 'Terminal';
-          let subMenubarName = 'Run Task...';
-          await app.sleep(2000);
-          await app.openMenuBar(menubarName);
-          await app.openSubMenu(subMenubarName);
-          
-          await app.runTask(taskLabel);
-          await app.sleep(50000);
-      
-          await app.copyTerminalTextToClipboard();
-          await app.sleep(5000);
-          await app.createNewFile();
-          await app.sleep(5000);
-          await app.performPasteAction();
-          await app.sleep(5000);
-          assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-          await app.sleep(5000);
-          await app.saveFile();
-          await app.sleep(5000);
-          await app.closeAllTabsInMainArea();
-          await app.sleep(5000);
+        let taskLabel = 'R19-03 ara::com Generator';
+        let compareContext = 'EXIT PROGRAM';
+        let expectedResult = 'No Results';
+        let menubarName = 'Terminal';
+        let subMenubarName = 'Run Task...';
+        await app.sleep(2000);
+        await app.openMenuBar(menubarName);
+        await app.openSubMenu(subMenubarName);
+        
+        await app.runTask(taskLabel);
+        await app.sleep(20000);
+    
+        await app.copyTerminalTextToClipboard();
+        await app.createNewFile();
+        await app.performPasteAction();
+        assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
+
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
+
+        
   
       })
   
