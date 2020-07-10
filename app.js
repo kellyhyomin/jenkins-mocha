@@ -5,7 +5,7 @@ let driver = new Builder().forBrowser('chrome').setChromeOptions(
   new chrome.Options().addArguments(['--headless','--no-sandbox'])).build();
 let activeElement = driver.switchTo().activeElement();
 
-driver.manage().window().maximize();
+
 
 module.exports = {
   init: async function (url) {

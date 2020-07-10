@@ -26,8 +26,10 @@ describe('Test', function() {
         // workspace 없을 시 생성 
     })
     describe('PARA BASIC TEST', function() { 
+      
       beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
+        await app.maximizeBrowser();
         await app.sleep(3000);
         await app.switchIFrame(iframeId);
       });
