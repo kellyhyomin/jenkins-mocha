@@ -6,7 +6,7 @@ describe('Test', function() {
   before(async function() {
     let url = process.env.POPCORNSAR_STUDIO_URL;
     await app.init(url);
-    //await app.maximizeBrowser();
+    await app.maximizeBrowser();
   });
   after(async function() {
     await app.quit();
