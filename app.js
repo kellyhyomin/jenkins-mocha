@@ -1,9 +1,10 @@
-require('chromedriver');
 const chrome = require('selenium-webdriver/chrome');
 const { Builder, By, Key, until } = require('selenium-webdriver');
-let driver = new Builder().forBrowser('chrome').setChromeOptions(
-  new chrome.Options().addArguments(['--headless','--no-sandbox', '--window-size=1980,1080'])).build();
+const { Builder, By, Key, until } = require('selenium-webdriver');
+let driver = new Builder().forBrowser('chrome').build();
 let activeElement = driver.switchTo().activeElement();
+
+driver.manage().window().maximize();
 
 module.exports = {
   init: async function (url) {
