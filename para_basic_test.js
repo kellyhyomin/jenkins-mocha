@@ -29,7 +29,7 @@ describe('Test', function() {
       
       beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
-        await app.maximizeBrowser();
+        
         await app.sleep(3000);
         await app.switchIFrame(iframeId);
       });
@@ -45,6 +45,7 @@ describe('Test', function() {
         let expectedResult = 'No Results';
         let menubarName = 'Terminal';
         let subMenubarName = 'Run Task...';
+        await app.maximizeBrowser();
         await app.sleep(2000);
         await app.openMenuBar(menubarName);
         await app.openSubMenu(subMenubarName);
