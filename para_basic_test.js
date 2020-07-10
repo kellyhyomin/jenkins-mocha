@@ -46,7 +46,7 @@ describe('Test', function() {
         let menubarName = 'Terminal';
         let subMenubarName = 'Run Task...';
         await app.maximizeBrowser();
-        await app.sleep(2000);
+        await app.sleep(5000);
         await app.openMenuBar(menubarName);
         await app.openSubMenu(subMenubarName);
         
