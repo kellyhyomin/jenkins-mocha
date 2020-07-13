@@ -2,7 +2,7 @@
 const chrome = require('selenium-webdriver/chrome');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 let driver = new Builder().forBrowser('chrome').setChromeOptions(
-  new chrome.Options().addArguments(['--no-sandbox', '--start-maximized', '--disable-gpu'])).build();
+  new chrome.Options().addArguments(['--no-sandbox', '--start-maximized', '--disable-gpu', '--disable-dev-shm-usage'])).build();
 let activeElement = driver.switchTo().activeElement();
 
 
