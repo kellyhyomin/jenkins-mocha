@@ -2,7 +2,7 @@
 const chrome = require('selenium-webdriver/chrome');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 let driver = new Builder().forBrowser('chrome').setChromeOptions(
-  new chrome.Options().addArguments(['--no-sandbox', '--window-size=1920x1080', '--disable-dev-shm-usage'])).build();
+  new chrome.Options().addArguments(['--headless','--no-sandbox', '--window-size=1920x1080', '--disable-dev-shm-usage'])).build();
 let activeElement = driver.switchTo().activeElement();
 
 
