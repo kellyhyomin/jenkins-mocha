@@ -95,7 +95,7 @@ module.exports = {
   },
 
   copyTerminalTextToClipboard: async function() {
-    await driver.actions({bridge: true}).move({x: 257, y: 623}).pause(driver.actions().mouse()).press().move({x: 1600, y: 915})
+    await driver.actions({bridge: true}).move({x: 259, y: 590}).pause(driver.actions().mouse()).press().move({x: 713, y: 587})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();
     await driver.sleep(3000);
   },
