@@ -105,6 +105,11 @@ module.exports = {
     let xEndCoordinateShift = parseInt(textLayerSize.width);
     let yEndCoordinateShift = parseInt(textLayerSize.height);
     let EndCoordinateShift = yBeginCoordinateShift + yEndCoordinateShift;
+
+    console.log('yBeginCoordinateShift= ' + yBeginCoordinateShift);
+    console.log('xEndCoordinateShift= ' + xEndCoordinateShift);
+    console.log('EndCoordinateShift= ' + EndCoordinateShift);
+
    
     await driver.actions({bridge: true}).move({x: 257, y: yBeginCoordinateShift})
     .pause(driver.actions().mouse()).press().move({x: xEndCoordinateShift, y: EndCoordinateShift})
