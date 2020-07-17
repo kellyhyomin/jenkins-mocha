@@ -95,9 +95,20 @@ module.exports = {
   },
 
   copyTerminalTextToClipboard: async function() {
-    await driver.actions({bridge: true}).move({x: 259, y: 590}).pause(driver.actions().mouse()).press().move({x: 713, y: 587})
+    /* await driver.actions({bridge: true}).move({x: 259, y: 590}).pause(driver.actions().mouse()).press().move({x: 713, y: 587})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();
-    await driver.sleep(3000);
+    await driver.sleep(3000); */
+    let textLayerSize = await driver.findElement(By.xpath('//canvas[@class="xterm-text-layer"]')).getRect();
+    let a = parseInt(textLayerSize.y);
+    let b = parseInt(textLayerSize.height);
+    let sum = a+b;
+    console.log('x' + parseInt(textLayerSize.x));
+    console.log('y' + parseInt(textLayerSize.y));
+    console.log('width' + parseInt(textLayerSize.width));
+    console.log('height' + (a+b));
+    await driver.actions({async: true}).move({x: textLayerSize.x, y: parseInt(textLayerSize.y)})
+    .pause(driver.actions().mouse()).press().move({x: parseInt(textLayerSize.width), y: sum})
+        .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();    
   },
 
   createNewFile: async function(newFileName) {
