@@ -109,6 +109,7 @@ module.exports = {
     await driver.actions({async: true}).move({x: 257, y: parseInt(textLayerSize.y)})
     .pause(driver.actions().mouse()).press().move({x: parseInt(textLayerSize.width), y: sum})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();    
+      await driver.sleep(3000);
   },
 
   createNewFile: async function(newFileName) {
