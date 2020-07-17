@@ -99,15 +99,15 @@ module.exports = {
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();
     await driver.sleep(3000); */
     let textLayerSize = await driver.findElement(By.xpath('//canvas[@class="xterm-text-layer"]')).getRect();
-    let a = parseInt(textLayerSize.y);
-    let b = parseInt(textLayerSize.height);
-    let sum = a+b;
-    console.log('x' + parseInt(textLayerSize.x));
-    console.log('y' + parseInt(textLayerSize.y));
-    console.log('width' + parseInt(textLayerSize.width));
-    console.log('height' + (a+b));
-    await driver.actions({bridge: true}).move({x: 257, y: parseInt(textLayerSize.y)})
-    .pause(driver.actions().mouse()).press().move({x: parseInt(textLayerSize.width), y: sum})
+    
+    let xBeginCoordinateShift = parseInt(textLayerSize.x);
+    let yBeginCoordinateShift = parseInt(textLayerSize.y);
+    let xEndCoordinateShift = parseInt(textLayerSize.width);
+    let yEndCoordinateShift = parseInt(textLayerSize.height);
+    let EndCoordinateShift = yBeginCoordinateShift + yEndCoordinateShift;
+   
+    await driver.actions({bridge: true}).move({x: 257, y: yBeginCoordinateShift})
+    .pause(driver.actions().mouse()).press().move({x: xEndCoordinateShift, y: EndCoordinateShift})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();    
       await driver.sleep(3000);
   },
