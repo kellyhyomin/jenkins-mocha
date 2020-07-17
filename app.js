@@ -2,7 +2,7 @@
 const chrome = require('selenium-webdriver/chrome');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 let driver = new Builder().forBrowser('chrome').setChromeOptions(
-  new chrome.Options().addArguments(['--headless', '--no-sandbox', '--window-size=1980,1080'])).build();
+  new chrome.Options().addArguments(['--headless', '--no-sandbox', '--window-size=1920,1080'])).build();
 let activeElement = driver.switchTo().activeElement();
 
 
@@ -106,7 +106,7 @@ module.exports = {
     console.log('y' + parseInt(textLayerSize.y));
     console.log('width' + parseInt(textLayerSize.width));
     console.log('height' + (a+b));
-    await driver.actions({async: true}).move({x: 257, y: parseInt(textLayerSize.y)})
+    await driver.actions({async: true}).move({x: parseInt(textLayerSize.x), y: parseInt(textLayerSize.y)})
     .pause(driver.actions().mouse()).press().move({x: parseInt(textLayerSize.width), y: sum})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();    
       await driver.sleep(3000);
