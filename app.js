@@ -106,7 +106,7 @@ module.exports = {
     console.log('y' + parseInt(textLayerSize.y));
     console.log('width' + parseInt(textLayerSize.width));
     console.log('height' + (a+b));
-    await driver.actions({async: true}).move({x: parseInt(textLayerSize.x), y: parseInt(textLayerSize.y)})
+    await driver.actions({async: true}).move({x: 257, y: parseInt(textLayerSize.y)})
     .pause(driver.actions().mouse()).press().move({x: parseInt(textLayerSize.width), y: sum})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();    
   },
