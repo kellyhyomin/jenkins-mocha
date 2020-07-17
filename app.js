@@ -98,7 +98,7 @@ module.exports = {
     /* await driver.actions({bridge: true}).move({x: 259, y: 590}).pause(driver.actions().mouse()).press().move({x: 713, y: 587})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();
     await driver.sleep(3000); */
-    let textLayerSize = await driver.findElement(By.xpath('//canvas[@class="xterm-text-layer"]')).getRect();
+    /* let textLayerSize = await driver.findElement(By.xpath('//canvas[@class="xterm-text-layer"]')).getRect();
     
     let xBeginCoordinateShift = parseInt(textLayerSize.x);
     let yBeginCoordinateShift = parseInt(textLayerSize.y);
@@ -108,11 +108,11 @@ module.exports = {
 
     console.log('yBeginCoordinateShift= ' + yBeginCoordinateShift);
     console.log('xEndCoordinateShift= ' + xEndCoordinateShift);
-    console.log('EndCoordinateShift= ' + EndCoordinateShift);
+    console.log('EndCoordinateShift= ' + EndCoordinateShift); */
 
    
-    await driver.actions({bridge: true}).move({x: 257, y: yBeginCoordinateShift})
-    .pause(driver.actions().mouse()).press().move({x: xEndCoordinateShift, y: EndCoordinateShift})
+    await driver.actions({bridge: true}).move({x: 257, y: 704})
+    .pause(driver.actions().mouse()).press().move({x: 1604, y: 1042})
         .release().keyDown(Key.CONTROL).keyDown('c').keyUp(Key.CONTROL).keyUp('c').perform();    
       await driver.sleep(3000);
   },
