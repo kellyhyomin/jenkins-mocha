@@ -2,7 +2,7 @@ const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 const app = require('./app');
 describe('Test', function() {
-  this.timeout(1800000);
+  this.timeout(900000);
   before(async function() {
     let url = process.env.POPCORNSAR_STUDIO_URL;
     await app.init(url);
