@@ -36,7 +36,24 @@ describe('Test', function() {
         afterEach(async function() {
           await app.switchDefaultContent();
         });
-       
+        
+    
+          it('Test4: problems check' , async function() {
+            let fileName = 'global_supervision.cpp';
+            let fileTree = 'PARA1903_sample/para_PAA/phm';
+            let menubarName = 'View';
+            let subMenubarName = 'Problems';
+            
+            await app.findFile(fileName, fileTree);
+            await app.openMenuBar(menubarName);
+            await app.openSubMenu(subMenubarName);
+    
+            assert.equal(await app.checkProblems(), true);
+            await app.sleep(5000);
+            await app.openMenuBar(menubarName);
+            await app.openSubMenu(subMenubarName);
+            await app.closeAllTabsInMainArea();
+          })
           
     
           
