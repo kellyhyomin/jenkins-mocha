@@ -210,7 +210,7 @@ describe('Test', function() {
         //await app.exitTerminal(); // close terminal
       })  
 
-      it('Test7: Theia Debugging', async function() {
+      it.only('Test7: Theia Debugging', async function() {
         let fileName = 'application.cpp';
         let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
         let tabId = 'shell-tab-debug';
