@@ -36,9 +36,68 @@ describe('Test', function() {
         afterEach(async function() {
           await app.switchDefaultContent();
         });
-        
+        it('Test1: check projects directory', async function() {
+            let menubarName = 'View';
+            let subMenubarName = 'Explorer'
+            let dirname1 = '.theia';
+            let dirname2 = 'para_qemu_demo';
+            let dirname3 = 'para-qemu';
+            let dirname4 = 'PARA1903_generator';
+            let dirname5 = 'PARA1903_sample';
+            await app.sleep(5000);
+            await app.openMenuBar(menubarName);
+            await app.openSubMenu(subMenubarName); 
+            await app.sleep(3000);
+            assert.equal(await app.isExistDir(dirname1), true);
+            assert.equal(await app.isExistDir(dirname2), true);
+            assert.equal(await app.isExistDir(dirname3), true);
+            assert.equal(await app.isExistDir(dirname4), true);
+            assert.equal(await app.isExistDir(dirname5), true);
     
-          it('Test4: problems check' , async function() {
+            await app.closeTabExplorer();
+          })
+    
+          it('Test2: clangTidy check' , async function() {
+            let menubarName = 'View';
+            let subMenubarName = 'Explorer';
+            let dirname = '.theia';
+            let filename = 'settings.json';
+            let text = '//*[@id="code-editor-opener:file:///projects/.theia/settings.json"]/div/div[1]/div[2]/div[1]/div[4]/div[8]/span/span[4]';
+            let clangTidyCheck = '",-readability-"';        
+    
+            await app.openMenuBar(menubarName);
+            await app.openSubMenu(subMenubarName);
+            await app.openProjectsDir(dirname);
+            await app.openProjectsFile(dirname, filename); 
+    
+            assert.equal(await app.containTextInFile(text), clangTidyCheck);
+            //await app.closeTabExplorer();
+            await app.closeAllTabsInMainArea();
+          })
+
+          it('Test3: launch.json debug setting check', async function() {
+            let menubarName = 'View';
+            let subMenubarName = 'Explorer';
+            let dirname = '.theia';
+            let filename = 'launch.json';
+            let text = '//*[@id="code-editor-opener:file:///projects/.theia/launch.json"]/div/div[1]/div[2]/div[1]/div[4]/div[7]/span/span[4]';
+            let text2 = '//*[@id="code-editor-opener:file:///projects/.theia/launch.json"]/div/div[1]/div[2]/div[1]/div[4]/div[18]/span/span[4]';
+            let cppDebugProgram = '"${workspaceFolder}/hello.out"';        
+            let gdbServerProgram = '"${workspaceFolder}/PARA1903_sample/adaptive_platf';
+    
+            // await app.openMenuBar(menubarName);
+            // await app.openSubMenu(subMenubarName);
+             //await app.openProjectsDir(dirname);
+             await app.openProjectsFile(dirname, filename); 
+             await app.sleep(3000);
+            assert.equal(await app.containTextInFile(text), cppDebugProgram);
+            assert.equal(await app.containTextInFile(text2), gdbServerProgram);
+    
+            await app.closeTabExplorer();
+            await app.closeAllTabsInMainArea();
+          })
+    
+         /*  it('Test4: problems check' , async function() {
             let fileName = 'global_supervision.cpp';
             let fileTree = 'PARA1903_sample/para_PAA/phm';
             let menubarName = 'View';
@@ -54,7 +113,7 @@ describe('Test', function() {
             await app.openSubMenu(subMenubarName);
             await app.closeAllTabsInMainArea();
           })
-          
+           */
     
           
           
@@ -80,7 +139,7 @@ describe('Test', function() {
             //await app.exitTerminal();
           })
 
-          /* it('Test6: check CPATH', async function() {
+          it('Test6: check CPATH', async function() {
             let menubarName = 'Terminal';
             let subMenubarName = 'New Terminal';
             let command = 'echo $CPATH';
@@ -97,9 +156,9 @@ describe('Test', function() {
             await app.saveFile();
             await app.closeAllTabsInMainArea();
             //await app.exitTerminal();
-          }) */
+          })
     
-        /* it('Test7: cpp debugging', async function() {
+        it('Test7: cpp debugging', async function() {
           let newFileName = 'hello.cpp';
           let input = '#include <iostream> \n using std::cout; \n using std::endl; \n int main() \n { \n cout << "Hello, World!" << endl; \n return 0; \n ';
           let menubarName = 'Terminal';
@@ -148,7 +207,7 @@ describe('Test', function() {
           //await app.pageDown();
           assert.equal(await app.checkAraAutoComplete(lineNumber), expectedResult);
         })
- */
+
     
       
           
