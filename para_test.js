@@ -60,7 +60,7 @@ describe('Test', function() {
         await app.closeAllTabsInMainArea();
 
       })
-      it('Task: R19-03 ara::com Generator', async function() {
+     /*  it('Task: R19-03 ara::com Generator', async function() {
         let taskLabel = 'R19-03 ara::com Generator';
         let compareContext = 'EXIT PROGRAM';
         let expectedResult = 'No Results';
@@ -107,7 +107,7 @@ describe('Test', function() {
         await app.saveFile();
         await app.closeAllTabsInMainArea();
 
-     })   
+     })    */
 
     })
 
