@@ -52,18 +52,15 @@ describe('Test', function() {
         await app.sleep(5000);
     
         await app.copyTerminalTextToClipboard();
-        await app.sleep(5000);
         await app.createNewFile();
-        await app.sleep(5000);
         await app.performPasteAction();
-        await app.sleep(5000);
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         await app.saveFile();
         await app.closeAllTabsInMainArea();
 
       })
-     /*  it('Task: R19-03 ara::com Generator', async function() {
+      it('Task: R19-03 ara::com Generator', async function() {
         let taskLabel = 'R19-03 ara::com Generator';
         let compareContext = 'EXIT PROGRAM';
         let expectedResult = 'No Results';
@@ -110,7 +107,7 @@ describe('Test', function() {
         await app.saveFile();
         await app.closeAllTabsInMainArea();
 
-     })    */
+     })   
 
     })
 
