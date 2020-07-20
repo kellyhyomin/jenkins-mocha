@@ -199,11 +199,9 @@ module.exports = {
   },
            
   addBreakPoint: async function(lineNumber) {
-    await driver.wait(until.elementLocated(By.id("theia-main-content-panel"))).click();
+   /*  await driver.wait(until.elementLocated(By.id("theia-main-content-panel"))).click();
     await driver.switchTo().activeElement().sendKeys(Key.PAGE_DOWN);
-    await driver.switchTo().activeElement().sendKeys(Key.PAGE_DOWN);
-    await driver.switchTo().activeElement().sendKeys(Key.PAGE_DOWN);
-    await driver.switchTo().activeElement().sendKeys(Key.PAGE_DOWN);
+    await driver.switchTo().activeElement().sendKeys(Key.PAGE_DOWN); */
     await driver.wait(until.elementLocated(By.xpath("//div[@class='line-numbers' and text()='"+ lineNumber +"']"))).click().then(el=>{
       driver.switchTo().activeElement().sendKeys(Key.SHIFT,Key.F9);
     })
