@@ -117,29 +117,30 @@ describe('Test', function() {
     
           
           
-          /* it('Test5: SSH qemu', async function() {
-            let menubarName = 'Terminal';
-            let subMenubarName = 'New Terminal';
-            let tabId = 'shell-tab-explorer-view-container';
-            let command = 'ssh qemu-env@localhost';
+          it('Task: Open qemu-env terminal 1', async function() {
+            let taskLabel = 'Open qemu-env terminal 1';
             let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
-            let expectedResult = 'No Results';        
-            
+            let expectedResult = 'No Results';
+            let menubarName = 'Terminal';
+            let subMenubarName = 'Run Task...';
+            await app.sleep(6000);
             await app.openMenuBar(menubarName);
             await app.openSubMenu(subMenubarName);
-     
-            await app.execCommand(command);
+    
+            await app.runTask(taskLabel);
+            await app.sleep(5000);
+        
             await app.copyTerminalTextToClipboard();
-            
             await app.createNewFile();
             await app.performPasteAction();
             assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
+    
             await app.saveFile();
             await app.closeAllTabsInMainArea();
-            //await app.exitTerminal();
-          }) */
+    
+          })
 
-          it('Test6: check CPATH', async function() {
+          /* it('Test6: check CPATH', async function() {
             let menubarName = 'Terminal';
             let subMenubarName = 'New Terminal';
             let command = 'echo $CPATH';
@@ -149,17 +150,14 @@ describe('Test', function() {
             await app.openSubMenu(subMenubarName);
             await app.sleep(3000);
             await app.execCommand(command);
-            await app.sleep(5000);
             await app.copyTerminalTextToClipboard();
-            await app.sleep(5000);
             await app.createNewFile();
             await app.performPasteAction();
-            await app.sleep(5000);
             assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
             await app.saveFile();
             await app.closeAllTabsInMainArea();
             //await app.exitTerminal();
-          })
+          }) */
     
         /* it('Test7: cpp debugging', async function() {
           let newFileName = 'hello.cpp';
