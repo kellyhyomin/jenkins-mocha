@@ -149,9 +149,12 @@ describe('Test', function() {
             await app.openSubMenu(subMenubarName);
             await app.sleep(3000);
             await app.execCommand(command);
+            await app.sleep(5000);
             await app.copyTerminalTextToClipboard();
+            await app.sleep(5000);
             await app.createNewFile();
             await app.performPasteAction();
+            await app.sleep(5000);
             assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
             await app.saveFile();
             await app.closeAllTabsInMainArea();
