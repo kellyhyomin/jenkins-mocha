@@ -36,7 +36,7 @@ describe('Test', function() {
         afterEach(async function() {
           await app.switchDefaultContent();
         });
-        it('Test1: check projects directory', async function() {
+        /* it('Test1: check projects directory', async function() {
             let menubarName = 'View';
             let subMenubarName = 'Explorer'
             let dirname1 = '.theia';
@@ -95,7 +95,7 @@ describe('Test', function() {
     
             await app.closeTabExplorer();
             await app.closeAllTabsInMainArea();
-          })
+          }) */
     
          /*  it('Test4: problems check' , async function() {
             let fileName = 'global_supervision.cpp';
@@ -117,7 +117,7 @@ describe('Test', function() {
     
           
           
-          it('Test5: SSH qemu', async function() {
+          /* it('Test5: SSH qemu', async function() {
             let menubarName = 'Terminal';
             let subMenubarName = 'New Terminal';
             let tabId = 'shell-tab-explorer-view-container';
@@ -194,7 +194,7 @@ describe('Test', function() {
           await app.openMenuBar(menubarName2);
           await app.openSubMenu(subMenubarName2); 
           await app.openTab(tabId);
-        })
+        }) */
     
         it('Test8: ara-api auto complete check', async function() {
           let fileName = 'main.cpp';
@@ -204,7 +204,6 @@ describe('Test', function() {
             
           await app.findFile(fileName, fileTree);
           await app.sleep(3000);
-          await app.pageDown();
           assert.equal(await app.checkAraAutoComplete(lineNumber), expectedResult);
         })
 
