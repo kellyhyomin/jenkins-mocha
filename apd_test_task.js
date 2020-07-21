@@ -231,20 +231,16 @@ describe('Test', function() {
         await app.pageDown();
         await app.pageDown();
         await app.addBreakPoint(lineNumber);
-        /* try {
-          //await app.startDebugging(debugOptionVal);
-          await app.sleep(20000);
-          assert.equal(await app.checkPauseBreakPoint(), expectedResult);
-          await app.stopDebugging();
-          await app.sleep(5000);
-          await app.openMenuBar(menubarName2);
-          await app.openSubMenu(subMenubarName2); 
-          await app.sleep(5000);
-        } catch (err) {
-          console.log('Adding breakpoint failed.');
-        }
-       */
         
+        await app.startDebugging(debugOptionVal);
+        await app.sleep(20000);
+        assert.equal(await app.checkPauseBreakPoint(), expectedResult);
+        await app.stopDebugging();
+        await app.sleep(5000);
+        await app.openMenuBar(menubarName2);
+        await app.openSubMenu(subMenubarName2); 
+        await app.sleep(5000);
+    
       })
 
     })
