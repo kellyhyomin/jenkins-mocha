@@ -225,7 +225,6 @@ describe('Test', function() {
         await app.pageDown();
         await app.pageDown();
         await app.pageDown();
-        await app.pageDown();
         await app.addBreakPoint(lineNumber);
         await app.startDebugging(debugOptionVal);
         await app.sleep(20000);
