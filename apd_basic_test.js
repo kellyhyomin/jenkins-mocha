@@ -107,25 +107,8 @@ describe('Test', function() {
         await app.closeTabExplorer();
         await app.closeAllTabsInMainArea();
       }) */
-
-      /* it('Test6: problems check' , async function() {
-        let fileName = 'package_management_application.cpp';
-        let fileTree = 'apd-sample/ara-api/ucm/pkgmgr/src';
-        let menubarName = 'View';
-        let subMenubarName = 'Problems';
-        
-        await app.findFile(fileName, fileTree);
-        await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName);
-
-        assert.equal(await app.checkProblems(), true);
-        await app.sleep(5000);
-        await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName);
-        await app.closeAllTabsInMainArea();
-      }) */
       
-      it('Test7: SSH qemu', async function() {
+      it('Test6: SSH qemu', async function() {
         let menubarName = 'Terminal';
         let subMenubarName = 'New Terminal';
         let command = 'ssh qemu-env@localhost';
@@ -147,7 +130,7 @@ describe('Test', function() {
       })
 
   
-      it('Test8: check CPATH', async function() {
+      it('Test7: check CPATH', async function() {
         let menubarName = 'Terminal';
         let subMenubarName = 'New Terminal';
         let command = 'echo $CPATH';
@@ -166,7 +149,7 @@ describe('Test', function() {
         //await app.exitTerminal();
       })
 
-    it('Test9: python debugging check', async function() {
+    it('Test8: python debugging check', async function() {
         let fileName = 'view.py';
         let fileTree = 'apd-sample/ara-api/apd/ara-gen/generator/views';
         let tabId = 'shell-tab-debug';
@@ -194,7 +177,7 @@ describe('Test', function() {
 
     })
 
-    it('Test10: cpp debugging', async function() {
+    it('Test9: cpp debugging', async function() {
       let newFileName = 'hello.cpp';
       let input = '#include <iostream> \n using std::cout; \n using std::endl; \n int main() \n { \n cout << "Hello, World!" << endl; \n return 0; \n ';
       let menubarName = 'Terminal';
@@ -234,7 +217,7 @@ describe('Test', function() {
       await app.sleep(1000);
     })
 
-    it('Test11: ara-api auto complete check', async function() {
+    it('Test10: ara-api auto complete check', async function() {
       let fileName = 'application.cpp';
       let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
       let lineNumber = '68'
@@ -253,6 +236,23 @@ describe('Test', function() {
       await app.sleep(3000);
       assert.equal(await app.checkAraAutoComplete(lineNumber), expectedResult);
     })
+
+    it('Test11: problems check' , async function() {
+        let fileName = 'package_management_application.cpp';
+        let fileTree = 'apd-sample/ara-api/ucm/pkgmgr/src';
+        let menubarName = 'View';
+        let subMenubarName = 'Problems';
+        
+        await app.findFile(fileName, fileTree);
+        await app.openMenuBar(menubarName);
+        await app.openSubMenu(subMenubarName);
+
+        assert.equal(await app.checkProblems(), true);
+        await app.sleep(5000);
+        await app.openMenuBar(menubarName);
+        await app.openSubMenu(subMenubarName);
+        await app.closeAllTabsInMainArea();
+      })
 
   })
   
