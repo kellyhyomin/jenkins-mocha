@@ -228,6 +228,7 @@ describe('Test', function() {
         await app.openTab(tabId);
         await app.pageDown();
         await app.pageDown();
+        await app.pageDown();
         await app.addBreakPoint(lineNumber);
         try {
           await app.startDebugging(debugOptionVal);
