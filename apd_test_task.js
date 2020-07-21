@@ -219,7 +219,11 @@ describe('Test', function() {
         let expectedResult = 'PAUSED ON BREAKPOINT';
         let menubarName2 = 'Debug';
         let subMenubarName2 = 'Remove All Breakpoints';
-
+        let menubarName = 'Terminal';
+        let subMenubarName = 'New Terminal';
+        await app.openMenuBar(menubarName);
+        await app.openSubMenu(subMenubarName);
+        await app.sleep(3000);
         await app.findFile(fileName, fileTree);
         await app.openTab(tabId);
         await app.pageDown();
