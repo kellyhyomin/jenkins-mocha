@@ -108,7 +108,7 @@ describe('Test', function() {
         await app.closeAllTabsInMainArea();
       }) */
 
-      it('Test6: problems check' , async function() {
+      /* it('Test6: problems check' , async function() {
         let fileName = 'package_management_application.cpp';
         let fileTree = 'apd-sample/ara-api/ucm/pkgmgr/src';
         let menubarName = 'View';
@@ -123,7 +123,7 @@ describe('Test', function() {
         await app.openMenuBar(menubarName);
         await app.openSubMenu(subMenubarName);
         await app.closeAllTabsInMainArea();
-      })
+      }) */
       
       it('Test7: SSH qemu', async function() {
         let menubarName = 'Terminal';
