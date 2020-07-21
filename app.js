@@ -199,9 +199,10 @@ module.exports = {
   },
            
   addBreakPoint: async function(lineNumber) {
-    await driver.wait(until.elementLocated(By.xpath("//div[@class='line-numbers' and text()='"+ lineNumber +"']")), 7000).click().then(el=>{
+    /* await driver.wait(until.elementLocated(By.xpath("//div[@class='line-numbers' and text()='"+ lineNumber +"']")), 7000).click().then(el=>{
       driver.switchTo().activeElement().sendKeys(Key.SHIFT,Key.F9);
-    })
+    }) */
+    await driver.wait(until.elementLocated(By.xpath('//*[@id="code-editor-opener:file:///projects/apd-sample/sample-applications/phm_examples/phm_demo/src/application.cpp"]/div/div[1]/div[2]/div[1]/div[4]/div[30]/span/span[1]'))).getText(el=>console.log('result=====================>' + el));
   },
 
   startDebugging: async function(debugOptionVal) {
