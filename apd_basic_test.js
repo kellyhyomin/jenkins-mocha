@@ -241,7 +241,7 @@ describe('Test', function() {
       let fileName = 'application.cpp';
       let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
       let lineNumber = '68'
-      let expectedResult =  ' log'
+      let expectedResult =  ' ucm'
       /* let menubarName = 'Terminal';
       let subMenubarName = 'New Terminal';
 
