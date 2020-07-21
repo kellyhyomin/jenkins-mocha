@@ -202,7 +202,10 @@ module.exports = {
     /* await driver.wait(until.elementLocated(By.xpath("//div[contains(text(), '" +lineNumber +"')]")), 7000).getText().then(el=>{
      
     }) */
-    await driver.wait(until.elementLocated(By.xpath("//div[contains(text(), '" +lineNumber +"')]")), 7000).click().then(el=>{
+    /* await driver.wait(until.elementLocated(By.xpath("//div[@class='line-numbers' and text()='"+ lineNumber +"']")), 7000).click().then(el=>{
+      driver.switchTo().activeElement().sendKeys(Key.SHIFT,Key.F9);
+    }) */
+    await driver.wait(until.elementLocated(By.xpath("//div[contains(@class, 'line-numbers') and text()='"+ lineNumber +"']")), 7000).click().then(el=>{
       driver.switchTo().activeElement().sendKeys(Key.SHIFT,Key.F9);
     })
   },
