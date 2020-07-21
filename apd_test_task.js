@@ -37,7 +37,7 @@ describe('Test', function() {
       afterEach(async function() {
         await app.switchDefaultContent();
       });
-      it('Test 1,2: yocto env setup & Build phm_examples', async function() {
+      /* it('Test 1,2: yocto env setup & Build phm_examples', async function() {
         let taskLabel = 'Build phm_examples';
         let compareContext = '[100%] Built target phm_demo';
         let expectedResult = 'No Results';
@@ -57,7 +57,7 @@ describe('Test', function() {
 
       
         //await app.exitTerminal();
-      })
+      }) */
 
       /* it('Test3: Run qemu - run_ecu1', async function() {
         let taskLabel = 'Run QEMU with ECU1';
@@ -103,7 +103,7 @@ describe('Test', function() {
         //await app.exitTerminal(); // close terminal
       })   */
 
-      it('Test3: Run qemu - run_ecu1', async function() {
+      /* it('Test3: Run qemu - run_ecu1', async function() {
         let menubarName = 'Terminal';
         let subMenubarName = 'New Terminal';
         let command = 'ssh qemu-env@localhost /projects/apd/scripts/run_ecu1.sh';
@@ -208,7 +208,7 @@ describe('Test', function() {
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         //await app.exitTerminal(); // close terminal
-      })  
+      })   */
 
       it('Test7: Theia Debugging', async function() {
         let fileName = 'application.cpp';
@@ -235,7 +235,6 @@ describe('Test', function() {
         await app.openMenuBar(menubarName2);
         await app.openSubMenu(subMenubarName2); 
         await app.sleep(5000);
-        
         
       })
 
