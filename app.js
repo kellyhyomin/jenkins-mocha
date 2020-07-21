@@ -171,7 +171,7 @@ module.exports = {
 
    checkAraAutoComplete: async function(lineNumber) {
     let result = '';
-    await driver.wait(until.elementLocated(By.xpath("//div[@class='line-numbers' and text()='"+ lineNumber +"']"))).click().then(async function() {
+    await driver.wait(until.elementLocated(By.xpath("//div[contains(@class, 'line-numbers') and text()='"+ lineNumber +"']"))).click().then(async function() {
       await driver.switchTo().activeElement().sendKeys(Key.ARROW_RIGHT + 'ara::' + Key.CONTROL, Key.SPACE).then(async function() {
         let element = await driver.findElements(By.className('monaco-highlighted-label'));
         let currentElement = await element.pop();
