@@ -215,7 +215,7 @@ describe('Test', function() {
         let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
         let tabId = 'shell-tab-debug';
         let debugOptionVal = 'Attach gdbserver__CONF__file:///projects';
-        let lineNumber = '71';
+        let lineNumber = '1';
         let expectedResult = 'PAUSED ON BREAKPOINT';
         let menubarName2 = 'Debug';
         let subMenubarName2 = 'Remove All Breakpoints';
@@ -226,14 +226,10 @@ describe('Test', function() {
         await app.sleep(3000);
         await app.findFile(fileName, fileTree);
         await app.openTab(tabId);
-        await app.pageDown();
-        await app.pageDown();
-        await app.pageDown();
-        await app.pageDown();
-        await app.pageDown();
+     
         await app.addBreakPoint(lineNumber);
         try {
-          await app.startDebugging(debugOptionVal);
+          //await app.startDebugging(debugOptionVal);
           await app.sleep(20000);
           assert.equal(await app.checkPauseBreakPoint(), expectedResult);
           await app.stopDebugging();
