@@ -227,9 +227,9 @@ describe('Test', function() {
         await app.findFile(fileName, fileTree);
         await app.sleep(3000);
         await app.openTab(tabId);
-       /*  await app.sleep(3000);
+        await app.sleep(3000);
         await app.addBreakPoint(lineNumber);
-        try {
+        /* try {
           //await app.startDebugging(debugOptionVal);
           await app.sleep(20000);
           assert.equal(await app.checkPauseBreakPoint(), expectedResult);
