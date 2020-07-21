@@ -120,7 +120,6 @@ describe('Test', function() {
           it('Test5: SSH qemu', async function() {
             let menubarName = 'Terminal';
             let subMenubarName = 'New Terminal';
-            let tabId = 'shell-tab-explorer-view-container';
             let command = 'ssh qemu-env@localhost';
             let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
             let expectedResult = 'No Results';        

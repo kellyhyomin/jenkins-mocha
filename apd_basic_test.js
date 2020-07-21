@@ -128,7 +128,6 @@ describe('Test', function() {
       it('Test7: SSH qemu', async function() {
         let menubarName = 'Terminal';
         let subMenubarName = 'New Terminal';
-        let tabId = 'shell-tab-explorer-view-container';
         let command = 'ssh qemu-env@localhost';
         let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
         let expectedResult = 'No Results';        
@@ -137,7 +136,6 @@ describe('Test', function() {
         await app.openSubMenu(subMenubarName);
  
         await app.execCommand(command);
-        await app.sleep(3000);
         await app.copyTerminalTextToClipboard();
         
         await app.createNewFile();
@@ -159,7 +157,6 @@ describe('Test', function() {
         await app.openSubMenu(subMenubarName);
         await app.sleep(3000);
         await app.execCommand(command);
-        await app.sleep(3000);
         await app.copyTerminalTextToClipboard();
         await app.createNewFile();
         await app.performPasteAction();
