@@ -37,7 +37,7 @@ describe('Test', function() {
       afterEach(async function() {
         await app.switchDefaultContent();
       });
-      it('Test2: check projects directory', async function() {
+      /* it('Test2: check projects directory', async function() {
         let menubarName = 'View';
         let subMenubarName = 'Explorer'
         let dirname1 = '.theia';
@@ -69,9 +69,9 @@ describe('Test', function() {
         
         assert.equal(await app.containTextInFile(text), pythonPath);
         //await app.closeTabExplorer();
-      })
+      }) */
 
-      it('Test5: clangTidy check' , async function() {
+      /* it('Test5: clangTidy check' , async function() {
         let menubarName = 'View';
         let subMenubarName = 'Explorer';
         let dirname = '.theia';
@@ -79,15 +79,10 @@ describe('Test', function() {
         let text = '//*[@id="code-editor-opener:file:///projects/.theia/settings.json"]/div/div[1]/div[2]/div[1]/div[4]/div[8]/span/span[4]';
         let clangTidyCheck = '",-readability-"';        
 
-        /* await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName);
-        await app.openProjectsDir(dirname);
-        await app.openProjectsFile(dirname, filename);  */
-
         assert.equal(await app.containTextInFile(text), clangTidyCheck);
         await app.closeTabExplorer();
         await app.closeAllTabsInMainArea();
-      })
+      }) */
 
       /* it('Test case6 - launch.json debug setting check', async function() {
         let menubarName = 'View';
@@ -108,7 +103,7 @@ describe('Test', function() {
         await app.closeAllTabsInMainArea();
       }) */
 
-      it('Test6: problems check' , async function() {
+      /* it('Test6: problems check' , async function() {
         let fileName = 'package_management_application.cpp';
         let fileTree = 'apd-sample/ara-api/ucm/pkgmgr/src';
         let menubarName = 'View';
@@ -123,7 +118,7 @@ describe('Test', function() {
         await app.openMenuBar(menubarName);
         await app.openSubMenu(subMenubarName);
         await app.closeAllTabsInMainArea();
-      })
+      }) */
       
       it('Test7: SSH qemu', async function() {
         let menubarName = 'Terminal';
@@ -167,7 +162,7 @@ describe('Test', function() {
         //await app.exitTerminal();
       })
 
-    it('Test9: python debugging check', async function() {
+    /* it('Test9: python debugging check', async function() {
         let fileName = 'view.py';
         let fileTree = 'apd-sample/ara-api/apd/ara-gen/generator/views';
         let tabId = 'shell-tab-debug';
@@ -233,14 +228,14 @@ describe('Test', function() {
       await app.sleep(1000);
       await app.openTab(tabId);
       await app.sleep(1000);
-    })
+    }) */
 
     it('Test11: ara-api auto complete check', async function() {
       let fileName = 'application.cpp';
       let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
       let lineNumber = '68'
       let expectedResult =  ' log'
-   /*    let menubarName = 'Terminal';
+      /* let menubarName = 'Terminal';
       let subMenubarName = 'New Terminal';
 
       await app.openMenuBar(menubarName);
@@ -251,7 +246,7 @@ describe('Test', function() {
       await app.pageDown();
       await app.pageDown();
       await app.pageDown();
-      await app.sleep(5000);
+      await app.sleep(3000);
       assert.equal(await app.checkAraAutoComplete(lineNumber), expectedResult);
     })
 
