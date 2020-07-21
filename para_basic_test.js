@@ -204,7 +204,7 @@ describe('Test', function() {
             
           await app.findFile(fileName, fileTree);
           await app.sleep(3000);
-          //await app.pageDown();
+          await app.pageDown();
           assert.equal(await app.checkAraAutoComplete(lineNumber), expectedResult);
         })
 
