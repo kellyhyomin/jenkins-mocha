@@ -137,6 +137,7 @@ describe('Test', function() {
         await app.openSubMenu(subMenubarName);
  
         await app.execCommand(command);
+        await app.sleep(3000);
         await app.copyTerminalTextToClipboard();
         
         await app.createNewFile();
@@ -158,6 +159,7 @@ describe('Test', function() {
         await app.openSubMenu(subMenubarName);
         await app.sleep(3000);
         await app.execCommand(command);
+        await app.sleep(3000);
         await app.copyTerminalTextToClipboard();
         await app.createNewFile();
         await app.performPasteAction();
@@ -245,7 +247,7 @@ describe('Test', function() {
 
       await app.openMenuBar(menubarName);
       await app.openSubMenu(subMenubarName);  */
-      
+      await app.sleep(3000);
       await app.findFile(fileName, fileTree);
       
       await app.pageDown();
