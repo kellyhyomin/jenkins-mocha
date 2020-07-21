@@ -103,7 +103,7 @@ describe('Test', function() {
         //await app.exitTerminal(); // close terminal
       })   */
 
-/*       it('Test3: Run qemu - run_ecu1', async function() {
+      /* it('Test3: Run qemu - run_ecu1', async function() {
         let menubarName = 'Terminal';
         let subMenubarName = 'New Terminal';
         let command = 'ssh qemu-env@localhost /projects/apd/scripts/run_ecu1.sh';
@@ -187,7 +187,7 @@ describe('Test', function() {
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         //await app.exitTerminal(); // close terminal
-      })  
+      })   */
 
       it('Test6: Run gdbserver', async function() {
         let taskLabel = 'Run GDB Server';
@@ -208,7 +208,7 @@ describe('Test', function() {
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
 
         //await app.exitTerminal(); // close terminal
-      })   */
+      })  
 
       it('Test7: Theia Debugging', async function() {
         let fileName = 'application.cpp';
@@ -222,6 +222,8 @@ describe('Test', function() {
 
         await app.findFile(fileName, fileTree);
         await app.openTab(tabId);
+        await app.pageDown();
+        await app.pageDown();
         await app.pageDown();
         await app.addBreakPoint(lineNumber);
         await app.startDebugging(debugOptionVal);
