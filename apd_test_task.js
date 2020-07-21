@@ -226,10 +226,10 @@ describe('Test', function() {
         await app.sleep(3000);
         await app.findFile(fileName, fileTree);
         await app.openTab(tabId);
+       /*  await app.pageDown();
         await app.pageDown();
         await app.pageDown();
-        await app.pageDown();
-        await app.pageDown();
+        await app.pageDown(); */
         await app.addBreakPoint(lineNumber);
         /* try {
           //await app.startDebugging(debugOptionVal);
