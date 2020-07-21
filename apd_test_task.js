@@ -215,7 +215,7 @@ describe('Test', function() {
         let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
         let tabId = 'shell-tab-debug';
         let debugOptionVal = 'Attach gdbserver__CONF__file:///projects';
-        let lineNumber = '1';
+        let lineNumber = '71';
         let expectedResult = 'PAUSED ON BREAKPOINT';
         let menubarName2 = 'Debug';
         let subMenubarName2 = 'Remove All Breakpoints';
