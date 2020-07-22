@@ -35,16 +35,9 @@ describe('Test', function() {
     })
     describe('PARA TEST', function() { 
       
-      beforeEach(async function() {
-        let iframeId = 'ide-application-iframe';
-        
-        await app.sleep(3000);
-        await app.switchIFrame(iframeId);
-      });
-        
-      afterEach(async function() {
+     /*  afterEach(async function() {
         await app.switchDefaultContent();
-      });
+      }); */
       
       it('Task: Open qemu-env terminal 1', async function() {
         let taskLabel = 'Open qemu-env terminal 1';
