@@ -84,11 +84,16 @@ module.exports = {
   },
   waitWorkspaceAndIde: async function() {
     await this.waitAndSwitchToIdeFrame();
+    await this.waitIde();
     //await this.waitIde(timeout);
   },
   waitAndSwitchToIdeFrame: async function() {
     let IDE_IFRAME_CSS = 'iframe#ide-application-iframe';
     await driver.wait(until.ableToSwitchToFrame(By.css(IDE_IFRAME_CSS)));
+  },
+  waitIde: async function() {
+    const IDE_TOP_MENU_PANEL_CSS = '#theia-app-shell #theia-top-panel .p-MenuBar-content';
+    await driver.wait(until.elementLocated(By.css(IDE_TOP_MENU_PANEL_CSS)));
   },
 
   ////// delete workspace //////
