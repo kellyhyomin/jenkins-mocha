@@ -14,6 +14,7 @@ describe('Test', function() {
         it('Login', async function() {
           const username = process.env.POPCORNSAR_STUDIO_USERNAME;
           const password = process.env.POPCORNSAR_STUDIO_PASSWORD;
+          await app.sleep(3000);
           await app.login(username, password);
         })
         // create workspace
