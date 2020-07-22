@@ -18,7 +18,11 @@ describe('Test', function() {
         })
         // create workspace
         it('Open New Workspace page', async function() {
-          await app.openPageByUI();
+          //await app.openPageByUI();
+          await app.waitDashboardPage();
+          await app.clickWorkspaceButton();
+          await app.clickAddWorkspaceButton();
+          await app.waitNewWorkspacePage();
         })
         it('Create and open workspace', async function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
