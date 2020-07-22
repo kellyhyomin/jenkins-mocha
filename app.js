@@ -68,12 +68,12 @@ module.exports = {
     await driver.wait(until.elementLocated(By.css(TITLE_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(HIDDEN_LOADER_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
-  selectStack: async function(stackId) {
-    const stackLocator = By.css(this.getStackCssLocator(stackId));
+  selectStack: async function(stackName) {
+    const stackLocator = By.css(this.getStackCssLocator(stackName));
     await driver.wait(until.elementLocated(stackLocator)).click();
   },
-  getStackCssLocator: async function(stackId) {
-    return `span[devfile-name='${stackId}']`;
+  getStackCssLocator: async function(stackName) {
+    return `span[devfile-name='${stackName}']`;
   },
   clickOnCreateAndOpenButton: async function() {
     let CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
@@ -81,8 +81,9 @@ module.exports = {
     await driver.wait(until.elementLocated(By.xpath(CREATE_AND_OPEN_BUTTON_XPATH))).click();
     await driver.wait(until.elementLocated(By.xpath(ideFrameLocator)));
   },
-  createAndOpenWorkspace: async function(stackId) {
-    await this.selectStack(stackId);
+  createAndOpenWorkspace: async function(stack) {
+    let stackName = stack;
+    await this.selectStack(stackName);
     await this.clickOnCreateAndOpenButton();
   },
   waitWorkspaceAndIde: async function() {

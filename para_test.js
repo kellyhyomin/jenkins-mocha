@@ -25,9 +25,9 @@ describe('Test', function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
           await app.createAndOpenWorkspace(STACK);
         })
-        it('Wait IDE availability', async function() {
+        /* it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();
-        })
+        }) */
         /* it('Test: SELECT WORKSPACE', async function() {
           const stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.selectWorkspace(stack);
