@@ -1,11 +1,9 @@
 
 const chrome = require('selenium-webdriver/chrome');
 const { Builder, By, Key, until } = require('selenium-webdriver');
-let driver = new Builder().forBrowser('chrome').setChromeOptions(
+const driver = new Builder().forBrowser('chrome').setChromeOptions(
   new chrome.Options().addArguments(['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--kiosk', 'window-size=1920,1080'])).build();
 let activeElement = driver.switchTo().activeElement();
-
-
 
 module.exports = {
   init: async function (url) {
@@ -33,6 +31,63 @@ module.exports = {
     await driver.findElement(By.id('username')).sendKeys(username);
     await driver.findElement(By.id('password')).sendKeys(password);
     await driver.findElement(By.id('password')).sendKeys(Key.ENTER);
+  },
+
+
+  //////create workspace //////
+  openPageByUI() {
+    //await this.dashboard.waitPage();
+    await this.clickWorkspaceButton();
+    await this.clickAddWorkspaceButton()
+    await this.waitNewWorkspacePage();
+  },
+  clickWorkspaceButton: async function() {
+    let WORKSPACE_BTN_CSS = '#workspaces-item';
+    await driver.wait(until.elementLocated(By.css(WORKSPACE_BTN_CSS))).click();
+  },
+  clickAddWorkspaceButton() {
+    let ADD_WORKSPACE_BTN_CSS = '#add-item-button';
+    await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BTN_CSS))).click();
+  },
+  waitNewWorkspacePage() {
+    let TS_SELENIUM_LOAD_PAGE_TIMEOUT = 12000;
+    let NAME_FIELD_CSS = '#workspace-name-input';
+    let TITLE_CSS = '#New_Workspace';
+    let HIDDEN_LOADER_CSS = 'md-progress-linear.create-workspace-progress[aria-hidden=\'true\']';
+    
+    await driver.wait(until.elementLocated(By.css(NAME_FIELD_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+    await driver.wait(until.elementLocated(By.css(TITLE_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+    await driver.wait(until.elementLocated(By.css(HIDDEN_LOADER_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+  },
+  selectStack(stackId) {
+    const stackLocator = By.css(this.getStackCssLocator(stackId));
+    await driver.wait(until.elementLocated(stackLocator)).click();
+  },
+  getStackCssLocator(stackId) {
+    return `span[devfile-name='${stackId}']`;
+  },
+  clickOnCreateAndOpenButton() {
+    let CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
+    const ideFrameLocator = By.xpath('//ide-iframe[@id=\'ide-iframe-window\' and @aria-hidden=\'false\']');
+    await driver.wait(until.elementLocated(By.xpath(CREATE_AND_OPEN_BUTTON_XPATH))).click();
+    await driver.wait(until.elementLocated(By.xpath(ideFrameLocator)));
+  },
+  createAndOpenWorkspace(stackId) {
+    await this.selectStack(stackId);
+    await this.clickOnCreateAndOpenButton();
+  },
+  waitWorkspaceAndIde() {
+    await this.waitAndSwitchToIdeFrame();
+    //await this.waitIde(timeout);
+  },
+  waitAndSwitchToIdeFrame() {
+    let IDE_IFRAME_CSS = 'iframe#ide-application-iframe';
+    await driver.wait(until.ableToSwitchToFrame(By.css(IDE_IFRAME_CSS)));
+  },
+
+  ////// delete workspace //////
+  deleteWorkspace() {
+    
   },
 
   selectWorkspace: async function(stack) {

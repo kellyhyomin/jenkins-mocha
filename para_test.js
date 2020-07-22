@@ -1,38 +1,45 @@
-const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 const app = require('./app');
 describe('Test', function() {
   this.timeout(600000);
   before(async function() {
-    let url = process.env.POPCORNSAR_STUDIO_URL;
+    const url = process.env.POPCORNSAR_STUDIO_URL;
     await app.init(url);
-    await app.maximizeBrowser();
   });
   after(async function() {
     await app.quit();
   });
 
-    describe('CHE TEST', function() { 
-        it('Test: LOGIN', async function() {
-          let username = process.env.POPCORNSAR_STUDIO_USERNAME;
-          let password = process.env.POPCORNSAR_STUDIO_PASSWORD;
+    describe('Login and wait dashboard', function() {
+        it('Login', async function() {
+          const username = process.env.POPCORNSAR_STUDIO_USERNAME;
+          const password = process.env.POPCORNSAR_STUDIO_PASSWORD;
           await app.login(username, password);
         })
-
-        it('Test: SELECT WORKSPACE', async function() {
-          let stack = process.env.POPCORNSAR_STUDIO_STACK;
-          await app.selectWorkspace(stack);
+        // create workspace
+        it('Open New Workspace page', async function() {
+          await app.openPageByUI();
         })
-        // workspace 없을 시 생성 
+        it('Create and open workspace', async function() {
+          const STACK = process.env.POPCORNSAR_STUDIO_STACK;
+          await app.createAndOpenWorkspace(STACK);
+        })
+        it('Wait IDE availability', async function() {
+          await app.waitWorkspaceAndIde();
+        })
+        /* it('Test: SELECT WORKSPACE', async function() {
+          const stack = process.env.POPCORNSAR_STUDIO_STACK;
+          await app.selectWorkspace(stack);
+        }) */
     })
     describe('PARA TEST', function() { 
       
-      beforeEach(async function() {
+      /* beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
         
         await app.sleep(3000);
         await app.switchIFrame(iframeId);
-      });
+      }); */
         
       afterEach(async function() {
         await app.switchDefaultContent();
@@ -111,6 +118,15 @@ describe('Test', function() {
 
     })
 
-  
+    describe('Stop and remove workspace', function() {
+      it('Stop workspace', async function() {
+     
+      })
+      it('Delete workspace', async function() {
+     
+      })
+  })
+
+    
 
 })
