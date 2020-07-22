@@ -18,12 +18,12 @@ describe('Test', function() {
         })
         // create workspace
         it('Open New Workspace page', async function() {
-          
+
           //await app.openPageByUI();
           await app.waitDashboardPage();
-          /* await app.clickWorkspaceButton();
+          await app.clickWorkspaceButton();
           await app.clickAddWorkspaceButton();
-          await app.waitNewWorkspacePage(); */
+          await app.waitNewWorkspacePage();
         })
         /* it('Create and open workspace', async function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
@@ -37,14 +37,14 @@ describe('Test', function() {
           await app.selectWorkspace(stack);
         }) */
     })
-    describe('PARA TEST', function() { 
+    /* describe('PARA TEST', function() { 
       
-      /* beforeEach(async function() {
+      beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
         
         await app.sleep(3000);
         await app.switchIFrame(iframeId);
-      }); */
+      });
         
       afterEach(async function() {
         await app.switchDefaultContent();
@@ -121,16 +121,16 @@ describe('Test', function() {
 
      })   
 
-    })
+    }) */
 
-    describe('Stop and remove workspace', function() {
+ /*  describe('Stop and remove workspace', function() {
       it('Stop workspace', async function() {
      
       })
       it('Delete workspace', async function() {
      
       })
-  })
+  }) */
 
     
 
