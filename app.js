@@ -55,8 +55,8 @@ module.exports = {
     let WORKSPACES_BUTTON_CSS = '#workspaces-item';
     let STACKS_BUTTON_CSS = '#stacks-item';
     await driver.wait(until.elementLocated(By.css(DASHBOARD_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
-    await driver.wait(until.elementLocated(By.css(WORKSPACES_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
-    await driver.wait(until.elementLocated(By.css(STACKS_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+   /*  await driver.wait(until.elementLocated(By.css(WORKSPACES_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+    await driver.wait(until.elementLocated(By.css(STACKS_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT); */
   },
   waitNewWorkspacePage: async function() {
     let NAME_FIELD_CSS = '#workspace-name-input';
