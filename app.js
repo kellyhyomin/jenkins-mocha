@@ -4,6 +4,7 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
 const driver = new Builder().forBrowser('chrome').setChromeOptions(
   new chrome.Options().addArguments(['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--kiosk', 'window-size=1920,1080'])).build();
 let activeElement = driver.switchTo().activeElement();
+let TS_SELENIUM_LOAD_PAGE_TIMEOUT = 12000;
 
 module.exports = {
   init: async function (url) {
@@ -36,7 +37,7 @@ module.exports = {
 
   //////create workspace //////
   openPageByUI: async function() {
-    //await this.dashboard.waitPage();
+    await this.waitDashboardPage();
     await this.clickWorkspaceButton();
     await this.clickAddWorkspaceButton()
     await this.waitNewWorkspacePage();
@@ -49,8 +50,15 @@ module.exports = {
     let ADD_WORKSPACE_BTN_CSS = '#add-item-button';
     await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BTN_CSS))).click();
   },
+  waitDashboardPage: async function() {
+    let DASHBOARD_BUTTON_CSS = '#dashboard-item';
+    let WORKSPACES_BUTTON_CSS = '#workspaces-item';
+    let STACKS_BUTTON_CSS = '#stacks-item';
+    await driver.wait(until.elementLocated(By.css(DASHBOARD_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+    await driver.wait(until.elementLocated(By.css(WORKSPACES_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+    await driver.wait(until.elementLocated(By.css(STACKS_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
+  },
   waitNewWorkspacePage: async function() {
-    let TS_SELENIUM_LOAD_PAGE_TIMEOUT = 12000;
     let NAME_FIELD_CSS = '#workspace-name-input';
     let TITLE_CSS = '#New_Workspace';
     let HIDDEN_LOADER_CSS = 'md-progress-linear.create-workspace-progress[aria-hidden=\'true\']';
