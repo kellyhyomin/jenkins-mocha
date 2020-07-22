@@ -68,27 +68,19 @@ module.exports = {
     await driver.wait(until.elementLocated(By.css(TITLE_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(HIDDEN_LOADER_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
-  /* selectStack: async function(stackId) {
-    const stackLocator = By.css(this.getStackCssLocator(stackId));
-    await driver.wait(until.elementLocated(By.css(`span[devfile-name='${stackId}']`))).click();
-  },
-  getStackCssLocator: async function(stackId) {
-    return `span[devfile-name='${stackId}']`;
+  selectStack: async function(stackId) {
+    const STACK_LOCATOR = "span[devfile-name='" + stackId + "']";
+    await driver.wait(until.elementLocated(By.css(STACK_LOCATOR))).click();
   },
   clickOnCreateAndOpenButton: async function() {
     let CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
-    const ideFrameLocator = By.xpath('//ide-iframe[@id=\'ide-iframe-window\' and @aria-hidden=\'false\']');
+    const IDE_FRAME_LOCATOR = '//ide-iframe[@id=\'ide-iframe-window\' and @aria-hidden=\'false\']';
     await driver.wait(until.elementLocated(By.xpath(CREATE_AND_OPEN_BUTTON_XPATH))).click();
-    await driver.wait(until.elementLocated(By.xpath(ideFrameLocator)));
-  }, */
+    await driver.wait(until.elementLocated(By.xpath(IDE_FRAME_LOCATOR)));
+  },
   createAndOpenWorkspace: async function(stackId) {
-    let CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
-    await driver.wait(until.elementLocated(By.css("span[devfile-name='" + stackId + "']"))).click();
-    await driver.wait(until.elementLocated(By.xpath(CREATE_AND_OPEN_BUTTON_XPATH))).click();
-    await driver.wait(until.elementLocated(By.xpath('//ide-iframe[@id=\'ide-iframe-window\' and @aria-hidden=\'false\']')));
-
-    /* await this.selectStack(stackId);
-    await this.clickOnCreateAndOpenButton(); */
+    await this.selectStack(stackId);
+    await this.clickOnCreateAndOpenButton();
   },
   waitWorkspaceAndIde: async function() {
     await this.waitAndSwitchToIdeFrame();

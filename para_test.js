@@ -23,18 +23,17 @@ describe('Test', function() {
         })
         it('Create and open workspace', async function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
-          await app.createAndOpenWorkspace('R19-03-PARA-OSB');
-          
+          await app.createAndOpenWorkspace(STACK);
         })
-        /* it('Wait IDE availability', async function() {
+        it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();
-        }) */
+        })
         /* it('Test: SELECT WORKSPACE', async function() {
           const stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.selectWorkspace(stack);
         }) */
     })
-    /* describe('PARA TEST', function() { 
+    describe('PARA TEST', function() { 
       
       beforeEach(async function() {
         let iframeId = 'ide-application-iframe';
@@ -118,7 +117,7 @@ describe('Test', function() {
 
      })   
 
-    }) */
+    })
 
  /*  describe('Stop and remove workspace', function() {
       it('Stop workspace', async function() {
