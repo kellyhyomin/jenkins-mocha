@@ -23,7 +23,7 @@ describe('Test', function() {
         })
         it('Create and open workspace', async function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
-          await app.createAndOpenWorkspace(STACK);
+          await app.createAndOpenWorkspace('R19-03-PARA-OSB');
         })
         /* it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();
