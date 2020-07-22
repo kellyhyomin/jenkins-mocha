@@ -20,17 +20,17 @@ describe('Test', function() {
         it('Open New Workspace page', async function() {
           //await app.openPageByUI();
           await app.waitDashboardPage();
-          await app.clickWorkspaceButton();
+          /* await app.clickWorkspaceButton();
           await app.clickAddWorkspaceButton();
-          await app.waitNewWorkspacePage();
+          await app.waitNewWorkspacePage(); */
         })
-        it('Create and open workspace', async function() {
+        /* it('Create and open workspace', async function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
           await app.createAndOpenWorkspace(STACK);
         })
         it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();
-        })
+        }) */
         /* it('Test: SELECT WORKSPACE', async function() {
           const stack = process.env.POPCORNSAR_STUDIO_STACK;
           await app.selectWorkspace(stack);
