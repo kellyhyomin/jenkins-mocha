@@ -35,7 +35,7 @@ module.exports = {
 
 
   //////create workspace //////
-  openPageByUI() {
+  openPageByUI: async function() {
     //await this.dashboard.waitPage();
     await this.clickWorkspaceButton();
     await this.clickAddWorkspaceButton()
@@ -45,11 +45,11 @@ module.exports = {
     let WORKSPACE_BTN_CSS = '#workspaces-item';
     await driver.wait(until.elementLocated(By.css(WORKSPACE_BTN_CSS))).click();
   },
-  clickAddWorkspaceButton() {
+  clickAddWorkspaceButton: async function() {
     let ADD_WORKSPACE_BTN_CSS = '#add-item-button';
     await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BTN_CSS))).click();
   },
-  waitNewWorkspacePage() {
+  waitNewWorkspacePage: async function() {
     let TS_SELENIUM_LOAD_PAGE_TIMEOUT = 12000;
     let NAME_FIELD_CSS = '#workspace-name-input';
     let TITLE_CSS = '#New_Workspace';
@@ -59,36 +59,34 @@ module.exports = {
     await driver.wait(until.elementLocated(By.css(TITLE_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(HIDDEN_LOADER_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
-  selectStack(stackId) {
+  selectStack: async function(stackId) {
     const stackLocator = By.css(this.getStackCssLocator(stackId));
     await driver.wait(until.elementLocated(stackLocator)).click();
   },
-  getStackCssLocator(stackId) {
+  getStackCssLocator: async function(stackId) {
     return `span[devfile-name='${stackId}']`;
   },
-  clickOnCreateAndOpenButton() {
+  clickOnCreateAndOpenButton: async function() {
     let CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
     const ideFrameLocator = By.xpath('//ide-iframe[@id=\'ide-iframe-window\' and @aria-hidden=\'false\']');
     await driver.wait(until.elementLocated(By.xpath(CREATE_AND_OPEN_BUTTON_XPATH))).click();
     await driver.wait(until.elementLocated(By.xpath(ideFrameLocator)));
   },
-  createAndOpenWorkspace(stackId) {
+  createAndOpenWorkspace: async function(stackId) {
     await this.selectStack(stackId);
     await this.clickOnCreateAndOpenButton();
   },
-  waitWorkspaceAndIde() {
+  waitWorkspaceAndIde: async function() {
     await this.waitAndSwitchToIdeFrame();
     //await this.waitIde(timeout);
   },
-  waitAndSwitchToIdeFrame() {
+  waitAndSwitchToIdeFrame: async function() {
     let IDE_IFRAME_CSS = 'iframe#ide-application-iframe';
     await driver.wait(until.ableToSwitchToFrame(By.css(IDE_IFRAME_CSS)));
   },
 
   ////// delete workspace //////
-  deleteWorkspace() {
-    
-  },
+
 
   selectWorkspace: async function(stack) {
     // await driver.manage().setTimeouts({ implicit: 50000 });
