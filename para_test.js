@@ -18,6 +18,7 @@ describe('Test', function() {
         })
         // create workspace
         it('Open New Workspace page', async function() {
+          
           //await app.openPageByUI();
           await app.waitDashboardPage();
           /* await app.clickWorkspaceButton();
