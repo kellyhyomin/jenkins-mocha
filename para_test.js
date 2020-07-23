@@ -20,7 +20,7 @@ describe('Test', function() {
           await app.login(username, password);
         })
         // create workspace
-       /*  it('Open New Workspace page', async function() {
+        it('Open New Workspace page', async function() {
           await app.openPageByUI();
         })
         it('Create and open workspace', async function() {
@@ -30,7 +30,7 @@ describe('Test', function() {
         })
         it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();
-        }) */
+        })
     })
     /* describe('PARA TEST', function() { 
       it('Task: Open qemu-env terminal 1', async function() {
