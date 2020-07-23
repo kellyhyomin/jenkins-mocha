@@ -32,7 +32,7 @@ describe('Test', function() {
           await app.waitWorkspaceAndIde();
         })
     })
-    /* describe('PARA TEST', function() { 
+    describe('PARA TEST', function() { 
       it('Task: Open qemu-env terminal 1', async function() {
         let taskLabel = 'Open qemu-env terminal 1';
         let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
@@ -104,7 +104,7 @@ describe('Test', function() {
 
      })   
 
-    }) */
+    })
 
   describe('Stop and remove workspace', function() {
       it('Delete workspace', async function() {
