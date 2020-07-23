@@ -38,7 +38,7 @@ describe('Test', function() {
         let dirname1 = '.theia';
         let dirname2 = 'apd';
         let dirname3 = 'apd-sample';
-        
+        await app.sleep(5000);
         await app.openMenuBar(menubarName);
         await app.openSubMenu(subMenubarName); 
 
