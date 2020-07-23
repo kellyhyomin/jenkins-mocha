@@ -31,7 +31,7 @@ describe('Test', function() {
       })
     })
  
-    /* describe('APD Test', function() {
+    describe('APD Test', function() {
       it('Test 1,2: yocto env setup & Build phm_examples', async function() {
         let taskLabel = 'Build phm_examples';
         let compareContext = '[100%] Built target phm_demo';
@@ -190,7 +190,7 @@ describe('Test', function() {
     
       })
 
-    }) */
+    })
     describe('Stop and remove workspace', function() {
       it('Delete workspace', async function() {
           await app.sleep(5000);
