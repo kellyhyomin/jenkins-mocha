@@ -196,7 +196,6 @@ describe('Test', function() {
         await app.openMenuBar(menubarName2);
         await app.openSubMenu(subMenubarName2); 
         await app.sleep(5000);
-    
       })
 
     })
