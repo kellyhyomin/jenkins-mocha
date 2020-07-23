@@ -1,42 +1,37 @@
-
-const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 const app = require('./app');
+const url = process.env.POPCORNSAR_STUDIO_URL;
+const username = process.env.POPCORNSAR_STUDIO_USERNAME;
+const password = process.env.POPCORNSAR_STUDIO_PASSWORD;
+const stack = process.env.POPCORNSAR_STUDIO_STACK;
+let workspaceName = '';
 describe('Test', function() {
   this.timeout(1800000);
   before(async function() {
-    let url = process.env.POPCORNSAR_STUDIO_URL;
     await app.init(url);
-    await app.maximizeBrowser();
   });
   after(async function() {
     await app.quit();
   });
 
-  describe('CHE TEST', function() { 
-      it('Test: LOGIN', async function() {
-        let username = process.env.POPCORNSAR_STUDIO_USERNAME;
-        let password = process.env.POPCORNSAR_STUDIO_PASSWORD;
-        await app.login(username, password);
-      })
-
-      it('Test: SELECT WORKSPACE', async function() {
-        let stack = process.env.POPCORNSAR_STUDIO_STACK;
-        await app.selectWorkspace(stack);
-      })
-      // workspace 없을 시 생성 
+  describe('Login and wait dashboard', function() {
+    it('Login', async function() {
+      await app.sleep(3000);
+      await app.login(username, password);
+    })
+    // create workspace
+    it('Open New Workspace page', async function() {
+      await app.openPageByUI();
+    })
+    it('Create and open workspace', async function() {
+      workspaceName = await app.getRandomWorkspaceName();
+      await app.createAndOpenWorkspace(stack);
+    })
+    it('Wait IDE availability', async function() {
+      await app.waitWorkspaceAndIde();
+    })
   })
     describe('Basic Test', function() { 
-      beforeEach(async function() {
-        let iframeId = 'ide-application-iframe';
-        
-        await app.sleep(3000);
-        await app.switchIFrame(iframeId);
-      });
-        
-      afterEach(async function() {
-        await app.switchDefaultContent();
-      });
       it('Test2: check projects directory', async function() {
         let menubarName = 'View';
         let subMenubarName = 'Explorer'
@@ -222,11 +217,7 @@ describe('Test', function() {
       let fileTree = 'apd-sample/sample-applications/phm_examples/phm_demo/src';
       let lineNumber = '68'
       let expectedResult =  ' log'
-      /* let menubarName = 'Terminal';
-      let subMenubarName = 'New Terminal';
 
-      await app.openMenuBar(menubarName);
-      await app.openSubMenu(subMenubarName);  */
       await app.sleep(3000);
       await app.findFile(fileName, fileTree);
       
@@ -254,6 +245,11 @@ describe('Test', function() {
         await app.closeAllTabsInMainArea();
       })
 
+  })
+  describe('Stop and remove workspace', function() {
+    it('Delete workspace', async function() {
+        await app.deleteWorkspace(workspaceName);
+    })
   })
   
 
