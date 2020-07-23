@@ -107,7 +107,7 @@ describe('Test', function() {
     }) */
 
   describe('Stop and remove workspace', function() {
-      it.only('Delete workspace', async function() {
+      it('Delete workspace', async function() {
           await app.deleteWorkspace(workspaceName);
       })
   })
