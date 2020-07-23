@@ -31,7 +31,7 @@ describe('Test', function() {
       })
     })
  
-    describe('APD Test', function() {
+    /* describe('APD Test', function() {
       it('Test 1,2: yocto env setup & Build phm_examples', async function() {
         let taskLabel = 'Build phm_examples';
         let compareContext = '[100%] Built target phm_demo';
@@ -53,50 +53,6 @@ describe('Test', function() {
       
         //await app.exitTerminal();
       })
-
-      /* it('Test3: Run qemu - run_ecu1', async function() {
-        let taskLabel = 'Run QEMU with ECU1';
-        let compareContext = '192.168.7.2 login:';
-        let expectedResult = 'No Results';
-        let menubarName = 'Terminal';
-        let subMenubarName = 'Run Task...';
-
-        await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName);
-
-        await app.runTask(taskLabel);
-        await app.sleep(45000);
-    
-        await app.copyTerminalTextToClipboard();
-        await app.createNewFile();
-        await app.performPasteAction();
-        assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-
-  
-        //await app.exitTerminal(); // close ssh 
-        //await app.exitTerminal(); // close terminal
-      })  
-      it('Test3: Run qemu - run_ecu2', async function() {
-        let taskLabel = 'Run QEMU with ECU2';
-        let compareContext = '192.168.7.2 login:';
-        let expectedResult = 'No Results';
-        let menubarName = 'Terminal';
-        let subMenubarName = 'Run Task...';
-
-        await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName);
-
-        await app.runTask(taskLabel);
-        await app.sleep(50000);
-    
-        await app.copyTerminalTextToClipboard();
-        await app.createNewFile();
-        await app.performPasteAction();
-        assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-        
-        //await app.exitTerminal(); // close ssh 
-        //await app.exitTerminal(); // close terminal
-      })   */
 
       it('Test3: Run qemu - run_ecu1', async function() {
         let menubarName = 'Terminal';
@@ -214,10 +170,6 @@ describe('Test', function() {
         let expectedResult = 'PAUSED ON BREAKPOINT';
         let menubarName2 = 'Debug';
         let subMenubarName2 = 'Remove All Breakpoints';
-        /* let menubarName = 'Terminal';
-        let subMenubarName = 'New Terminal';
-        await app.openMenuBar(menubarName);
-        await app.openSubMenu(subMenubarName); */
         await app.sleep(3000);
         await app.findFile(fileName, fileTree);
         await app.openTab(tabId);
@@ -238,7 +190,7 @@ describe('Test', function() {
     
       })
 
-    })
+    }) */
     describe('Stop and remove workspace', function() {
       it('Delete workspace', async function() {
           await app.deleteWorkspace(workspaceName);
