@@ -57,7 +57,7 @@ module.exports = {
     const DASHBOARD_BUTTON_CSS = '#dashboard-item';
     const WORKSPACES_BUTTON_CSS = '#workspaces-item';
     const STACKS_BUTTON_CSS = '#stacks-item';
-    await this.sleep(5000);
+    await this.sleep(10000);
     await driver.wait(until.elementLocated(By.css(DASHBOARD_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(WORKSPACES_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(STACKS_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
