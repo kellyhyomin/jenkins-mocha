@@ -20,7 +20,7 @@ describe('Test', function() {
           await app.login(username, password);
         })
         // create workspace
-        it('Open New Workspace page', async function() {
+       /*  it('Open New Workspace page', async function() {
           await app.openPageByUI();
         })
         it('Create and open workspace', async function() {
@@ -30,13 +30,9 @@ describe('Test', function() {
         })
         it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();
-        })
-        /* it('Test: SELECT WORKSPACE', async function() {
-          const stack = process.env.POPCORNSAR_STUDIO_STACK;
-          await app.selectWorkspace(stack);
         }) */
     })
-    describe('PARA TEST', function() { 
+    /* describe('PARA TEST', function() { 
       it('Task: Open qemu-env terminal 1', async function() {
         let taskLabel = 'Open qemu-env terminal 1';
         let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
@@ -108,7 +104,7 @@ describe('Test', function() {
 
      })   
 
-    })
+    }) */
 
   describe('Stop and remove workspace', function() {
       it.only('Delete workspace', async function() {
