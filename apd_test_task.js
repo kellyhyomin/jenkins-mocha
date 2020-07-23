@@ -32,16 +32,6 @@ describe('Test', function() {
     })
  
     describe('APD Test', function() {
-      beforeEach(async function() {
-        let iframeId = 'ide-application-iframe';
-        
-        await app.sleep(3000);
-        await app.switchIFrame(iframeId);
-      });
-        
-      afterEach(async function() {
-        await app.switchDefaultContent();
-      });
       it('Test 1,2: yocto env setup & Build phm_examples', async function() {
         let taskLabel = 'Build phm_examples';
         let compareContext = '[100%] Built target phm_demo';
