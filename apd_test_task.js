@@ -49,6 +49,8 @@ describe('Test', function() {
         await app.createNewFile();
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
 
       
         //await app.exitTerminal();
@@ -70,6 +72,8 @@ describe('Test', function() {
         await app.createNewFile();
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
 
         //await app.exitTerminal(); // close ssh 
         //await app.exitTerminal(); // close terminal
@@ -92,6 +96,8 @@ describe('Test', function() {
         await app.createNewFile();
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
         
         //await app.exitTerminal(); // close ssh 
         //await app.exitTerminal(); // close terminal
@@ -113,7 +119,8 @@ describe('Test', function() {
         await app.createNewFile();
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-        
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
 
         //await app.exitTerminal(); // close terminal
       })  
@@ -136,7 +143,8 @@ describe('Test', function() {
         await app.createNewFile();
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
         //await app.exitTerminal(); // close terminal
       })  
 
@@ -157,7 +165,8 @@ describe('Test', function() {
         await app.createNewFile();
         await app.performPasteAction();
         assert.notEqual(await app.isTextPresentInTerminalOutput(compareContext), expectedResult);
-
+        await app.saveFile();
+        await app.closeAllTabsInMainArea();
         //await app.exitTerminal(); // close terminal
       })  
 
@@ -193,7 +202,6 @@ describe('Test', function() {
     })
     describe('Stop and remove workspace', function() {
       it('Delete workspace', async function() {
-          await app.sleep(5000);
           await app.deleteWorkspace(workspaceName);
       })
     })
