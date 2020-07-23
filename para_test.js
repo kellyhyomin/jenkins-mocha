@@ -1,21 +1,21 @@
 const assert = require('assert')
 const app = require('./app');
+const url = process.env.POPCORNSAR_STUDIO_URL;
+const username = process.env.POPCORNSAR_STUDIO_USERNAME;
+const password = process.env.POPCORNSAR_STUDIO_PASSWORD;
+const stack = process.env.POPCORNSAR_STUDIO_STACK;
 let workspaceName = '';
 describe('Test', function() {
   this.timeout(600000);
   before(async function() {
-    const url = process.env.POPCORNSAR_STUDIO_URL;
     await app.init(url);
   });
   after(async function() {
-    
     await app.quit();
   });
 
     describe('Login and wait dashboard', function() {
         it('Login', async function() {
-          const username = process.env.POPCORNSAR_STUDIO_USERNAME;
-          const password = process.env.POPCORNSAR_STUDIO_PASSWORD;
           await app.sleep(3000);
           await app.login(username, password);
         })
@@ -24,9 +24,8 @@ describe('Test', function() {
           await app.openPageByUI();
         })
         it('Create and open workspace', async function() {
-          const STACK = process.env.POPCORNSAR_STUDIO_STACK;
           workspaceName = await app.getRandomWorkspaceName();
-          await app.createAndOpenWorkspace(STACK);
+          await app.createAndOpenWorkspace(stack);
         })
         it('Wait IDE availability', async function() {
           await app.waitWorkspaceAndIde();

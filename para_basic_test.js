@@ -25,9 +25,8 @@ describe('Test', function() {
       await app.openPageByUI();
     })
     it('Create and open workspace', async function() {
-      
       workspaceName = await app.getRandomWorkspaceName();
-      await app.createAndOpenWorkspace(STACK);
+      await app.createAndOpenWorkspace(stack);
     })
     it('Wait IDE availability', async function() {
       await app.waitWorkspaceAndIde();
