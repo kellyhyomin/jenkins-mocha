@@ -193,6 +193,7 @@ describe('Test', function() {
     }) */
     describe('Stop and remove workspace', function() {
       it('Delete workspace', async function() {
+          await app.sleep(5000);
           await app.deleteWorkspace(workspaceName);
       })
     })
