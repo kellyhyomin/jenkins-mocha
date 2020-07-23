@@ -137,7 +137,7 @@ module.exports = {
   },
   waitWorkspaceListItemAbcence: async function(workspaceName) {
     const WORKSPACE_LIST_ITEM_LOCATOR = `div[id='ws-full-name-` + NAMESPACE + `/` + workspaceName + `']`;
-    await driver.wait(until.elementIsNotVisible(By.css(WORKSPACE_LIST_ITEM_LOCATOR)));
+    await driver.wait(until.elementIsNotVisible(driver.findElement(By.css(WORKSPACE_LIST_ITEM_LOCATOR))),TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
 
   selectWorkspace: async function(stack) {
