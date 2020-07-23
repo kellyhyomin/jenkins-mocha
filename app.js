@@ -89,7 +89,7 @@ module.exports = {
   },
   getRandomWorkspaceName: async function() {
     const WORKSPACE_NAME_FIELD_LOCATOR = '#workspace-name-input';
-    return await driver.findElement(By.css(WORKSPACE_NAME_FIELD_LOCATOR)).getText();
+    return await driver.findElement(By.css(WORKSPACE_NAME_FIELD_LOCATOR)).getAttribute("placeholder");
   },
   waitWorkspaceAndIde: async function() {
     await this.waitAndSwitchToIdeFrame();
