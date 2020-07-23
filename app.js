@@ -116,11 +116,11 @@ module.exports = {
   },
   waitPage: async function() {
     const ADD_WORKSPACE_BUTTON_CSS = '#add-item-button';
-    await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BUTTON_CSS)));
+    await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
   waitWorkspaceListItem: async function(workspaceName) {
     const WORKSPACE_LIST_ITEM_LOCATOR = "#ws-name-" + workspaceName;
-    await driver.wait(until.elementLocated(By.css(WORKSPACE_LIST_ITEM_LOCATOR)));
+    await driver.wait(until.elementLocated(By.css(WORKSPACE_LIST_ITEM_LOCATOR)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
   clickWorkspaceListItem: async function(workspaceName) {
     const WORKSPACE_LIST_ITEM_LOCATOR = `div[id='ws-full-name-` + NAMESPACE + `/` + workspaceName + `']`;
