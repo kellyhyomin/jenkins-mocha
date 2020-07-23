@@ -1,5 +1,6 @@
 const assert = require('assert')
 const app = require('./app');
+let workspaceName = '';
 describe('Test', function() {
   this.timeout(600000);
   before(async function() {
@@ -7,6 +8,7 @@ describe('Test', function() {
     await app.init(url);
   });
   after(async function() {
+    
     await app.quit();
   });
 
@@ -23,6 +25,7 @@ describe('Test', function() {
         })
         it('Create and open workspace', async function() {
           const STACK = process.env.POPCORNSAR_STUDIO_STACK;
+          workspaceName = await app.getRandomWorkspaceName();
           await app.createAndOpenWorkspace(STACK);
         })
         it('Wait IDE availability', async function() {
@@ -34,11 +37,6 @@ describe('Test', function() {
         }) */
     })
     describe('PARA TEST', function() { 
-      
-     /*  afterEach(async function() {
-        await app.switchDefaultContent();
-      }); */
-      
       it('Task: Open qemu-env terminal 1', async function() {
         let taskLabel = 'Open qemu-env terminal 1';
         let compareContext = 'Welcome to Ubuntu 18.04.4 LTS';
@@ -112,14 +110,11 @@ describe('Test', function() {
 
     })
 
- /*  describe('Stop and remove workspace', function() {
-      it('Stop workspace', async function() {
-     
-      })
+  describe('Stop and remove workspace', function() {
       it('Delete workspace', async function() {
-     
+          await app.deleteWorkspace(workspaceName);
       })
-  }) */
+  })
 
     
 

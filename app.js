@@ -5,6 +5,7 @@ const driver = new Builder().forBrowser('chrome').setChromeOptions(
   new chrome.Options().addArguments(['--headless', '--no-sandbox', '--disable-dev-shm-usage', '--kiosk', 'window-size=1920,1080'])).build();
 let activeElement = driver.switchTo().activeElement();
 let TS_SELENIUM_LOAD_PAGE_TIMEOUT = 12000;
+let NAMESPACE = process.env.POPCORNSAR_STUDIO_USERNAME;
 
 module.exports = {
   init: async function (url) {
@@ -33,8 +34,10 @@ module.exports = {
     await driver.findElement(By.id('password')).sendKeys(password);
     await driver.findElement(By.id('password')).sendKeys(Key.ENTER);
   },
-
-
+  openDashboard: async function() {
+    await driver.navigate().to(process.env.POPCORNSAR_STUDIO_URL);
+    await this.waitDashboardPage();
+  },
   //////create workspace //////
   openPageByUI: async function() {
     await this.waitDashboardPage();
@@ -47,22 +50,22 @@ module.exports = {
     await driver.wait(until.elementLocated(By.css(WORKSPACE_BTN_CSS))).click();
   },
   clickAddWorkspaceButton: async function() {
-    let ADD_WORKSPACE_BTN_CSS = '#add-item-button';
+    const ADD_WORKSPACE_BTN_CSS = '#add-item-button';
     await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BTN_CSS))).click();
   },
   waitDashboardPage: async function() {
-    let DASHBOARD_BUTTON_CSS = '#dashboard-item';
-    let WORKSPACES_BUTTON_CSS = '#workspaces-item';
-    let STACKS_BUTTON_CSS = '#stacks-item';
+    const DASHBOARD_BUTTON_CSS = '#dashboard-item';
+    const WORKSPACES_BUTTON_CSS = '#workspaces-item';
+    const STACKS_BUTTON_CSS = '#stacks-item';
     await this.sleep(3000);
     await driver.wait(until.elementLocated(By.css(DASHBOARD_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(WORKSPACES_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(STACKS_BUTTON_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
   },
   waitNewWorkspacePage: async function() {
-    let NAME_FIELD_CSS = '#workspace-name-input';
-    let TITLE_CSS = '#New_Workspace';
-    let HIDDEN_LOADER_CSS = 'md-progress-linear.create-workspace-progress[aria-hidden=\'true\']';
+    const NAME_FIELD_CSS = '#workspace-name-input';
+    const TITLE_CSS = '#New_Workspace';
+    const HIDDEN_LOADER_CSS = 'md-progress-linear.create-workspace-progress[aria-hidden=\'true\']';
     
     await driver.wait(until.elementLocated(By.css(NAME_FIELD_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
     await driver.wait(until.elementLocated(By.css(TITLE_CSS)), TS_SELENIUM_LOAD_PAGE_TIMEOUT);
@@ -73,7 +76,7 @@ module.exports = {
     await driver.wait(until.elementLocated(By.css(STACK_LOCATOR))).click();
   },
   clickOnCreateAndOpenButton: async function() {
-    let CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
+    const CREATE_AND_OPEN_BUTTON_XPATH = '(//che-button-save-flat[@che-button-title=\'Create & Open\']/button)[1]';
     const IDE_FRAME_LOCATOR = '//ide-iframe[@id=\'ide-iframe-window\' and @aria-hidden=\'false\']';
     await driver.wait(until.elementLocated(By.xpath(CREATE_AND_OPEN_BUTTON_XPATH))).click();
     await driver.wait(until.elementLocated(By.xpath(IDE_FRAME_LOCATOR)));
@@ -82,13 +85,16 @@ module.exports = {
     await this.selectStack(stackId);
     await this.clickOnCreateAndOpenButton();
   },
+  getRandomWorkspaceName: async function() {
+    const WORKSPACE_NAME_FIELD_LOCATOR = '#workspace-name-input';
+    return await driver.findElement(By.css(WORKSPACE_NAME_FIELD_LOCATOR)).getText();
+  },
   waitWorkspaceAndIde: async function() {
     await this.waitAndSwitchToIdeFrame();
     await this.waitIde();
-    //await this.waitIde(timeout);
   },
   waitAndSwitchToIdeFrame: async function() {
-    let IDE_IFRAME_CSS = 'iframe#ide-application-iframe';
+    const IDE_IFRAME_CSS = 'iframe#ide-application-iframe';
     await driver.wait(until.ableToSwitchToFrame(By.css(IDE_IFRAME_CSS)));
   },
   waitIde: async function() {
@@ -97,7 +103,40 @@ module.exports = {
   },
 
   ////// delete workspace //////
-
+  deleteWorkspace: async function(workspaceName) {
+    await this.openDashboard();
+    await this.clickWorkspaceButton();
+    await this.waitPage();
+    await this.waitWorkspaceListItem(workspaceName);
+    await this.clickWorkspaceListItem(workspaceName);
+    await this.clickDeleteButtonOnWorkspaceDetails();
+    await this.clickConfirmDeletionButton();
+    await this.waitPage();
+    await this.waitWorkspaceListItemAbcence(workspaceName);
+  },
+  waitPage: async function() {
+    const ADD_WORKSPACE_BUTTON_CSS = '#add-item-button';
+    await driver.wait(until.elementLocated(By.css(ADD_WORKSPACE_BUTTON_CSS)));
+  },
+  waitWorkspaceListItem: async function(workspaceName) {
+    const WORKSPACE_LIST_ITEM_LOCATOR = "#ws-name-" + workspaceName;
+    await driver.wait(until.elementLocated(By.css(WORKSPACE_LIST_ITEM_LOCATOR)));
+  },
+  clickWorkspaceListItem: async function(workspaceName) {
+    const WORKSPACE_LIST_ITEM_LOCATOR = `div[id='ws-full-name-` + NAMESPACE + `/` + workspaceName + `']`;
+    await driver.wait(until.elementLocated(By.css(WORKSPACE_LIST_ITEM_LOCATOR))).click(); 
+  },
+  clickDeleteButtonOnWorkspaceDetails: async function() {
+    const DELETE_BTN_ON_WORKSPACE_DETAILS_LOCATOR = 'che-button-danger[che-button-title=\'Delete\']';
+    await driver.wait(until.elementLocated(By.css(DELETE_BTN_ON_WORKSPACE_DETAILS_LOCATOR))).click(); 
+  },
+  clickConfirmDeletionButton: async function() {
+    await driver.wait(until.elementLocated(By.css('#ok-dialog-button'))).click(); 
+  },
+  waitWorkspaceListItemAbcence: async function(workspaceName) {
+    const WORKSPACE_LIST_ITEM_LOCATOR = `div[id='ws-full-name-` + NAMESPACE + `/` + workspaceName + `']`;
+    await driver.wait(until.elementIsNotVisible(By.css(WORKSPACE_LIST_ITEM_LOCATOR)));
+  },
 
   selectWorkspace: async function(stack) {
     // await driver.manage().setTimeouts({ implicit: 50000 });
