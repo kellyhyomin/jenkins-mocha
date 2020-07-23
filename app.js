@@ -114,7 +114,7 @@ module.exports = {
     await this.clickDeleteButtonOnWorkspaceDetails();
     await this.clickConfirmDeletionButton();
     await this.waitWorkspacePage();
-    await this.waitWorkspaceListItemAbcence(workspaceName);
+    /* await this.waitWorkspaceListItemAbcence(workspaceName); */
   },
   waitWorkspacePage: async function() {
     const ADD_WORKSPACE_BUTTON_CSS = '#add-item-button';
