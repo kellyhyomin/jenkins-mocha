@@ -156,7 +156,7 @@ describe('Test', function() {
 
     it('Test7: cpp debugging', async function() {
       let newFileName = 'hello.cpp';
-      let input = '#include <iostream> \n using std::cout; \n using std::endl; \n int main() \n { \n cout << "Hello, World!" << endl; \n return 0; \n ';
+      let input = '#include <iostream> \n using std::cout; \n using std::endl; \n int main() \n { \n cout << "Hello, World!" << endl; \n return 0; } \n ';
       let menubarName = 'Terminal';
       let subMenubarName = 'New Terminal';
       let menubarName2 = 'Debug';
