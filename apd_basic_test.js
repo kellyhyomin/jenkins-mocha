@@ -246,11 +246,11 @@ describe('Test', function() {
       })
 
   })
-  describe('Stop and remove workspace', function() {
+  /*describe('Stop and remove workspace', function() {
     it('Delete workspace', async function() {
         await app.deleteWorkspace(workspaceName);
     })
-  })
+  })*/
   
 
 })
