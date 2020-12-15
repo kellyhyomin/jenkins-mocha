@@ -21,6 +21,7 @@ describe('Test', function() {
     })
     // create workspace
     it('Open New Workspace page', async function() {
+      await app.sleep(5000);
       await app.openPageByUI();
     })
     it('Create and open workspace', async function() {
