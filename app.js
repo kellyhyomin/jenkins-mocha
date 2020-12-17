@@ -45,7 +45,7 @@ module.exports = {
     await this.waitPage();
     await this.clickWorkspaceButton();
     await this.clickAddWorkspaceButton()
-    await this.waitNewWorkspacePage();
+    //await this.waitNewWorkspacePage();
   },
   clickWorkspaceButton: async function() {
     let WORKSPACE_BTN_CSS = '#workspaces-item';
